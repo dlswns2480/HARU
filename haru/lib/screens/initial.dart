@@ -42,11 +42,11 @@ class CategorySelect extends StatelessWidget {
                           width: 115,
                           height: 115,
                           decoration: BoxDecoration(
-                            image: const DecorationImage(
-                              image: AssetImage(
-                                'images/atom.png',
-                              ),
-                            ),
+                            // image: const DecorationImage(
+                            //   image: AssetImage(
+                            //     'images/atom.png',
+                            //   ),
+                            // ),
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(color: Colors.black, width: 2.0),
                           ),
