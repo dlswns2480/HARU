@@ -11,6 +11,17 @@ var categoryItem = [
   '영어',
   'etc',
 ];
+var icon_list = [
+  Icons.health_and_safety_outlined,
+  Icons.medical_information,
+  Icons.health_and_safety_outlined,
+  Icons.health_and_safety_outlined,
+  Icons.health_and_safety_outlined,
+  Icons.health_and_safety_outlined,
+  Icons.health_and_safety_outlined,
+  Icons.health_and_safety_outlined,
+  Icons.ac_unit_rounded
+];
 
 final List<bool> _selectedCategorys = <bool>[
   false,
@@ -91,6 +102,7 @@ class _CategorySelectState extends State<CategorySelect> {
                                       : Colors.black,
                                   width: 3.5),
                             ),
+                            child: Icon(icon_list[index]),
                           ),
                         ),
                         Text(
