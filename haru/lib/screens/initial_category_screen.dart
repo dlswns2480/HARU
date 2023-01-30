@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:haru/screens/home_screen.dart';
+import 'package:haru/screens/initial_alarm_screen.dart';
 
 var categoryItem = [
   '운동',
@@ -135,7 +135,7 @@ class _CategorySelectState extends State<CategorySelect> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const HomeScreen()),
+                          builder: (context) => const InitialAlarm()),
                     );
                   },
                   style: ButtonStyle(

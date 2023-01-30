@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:haru/screens/home_screen.dart';
 
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
+class InitialAlarm extends StatefulWidget {
+  const InitialAlarm({super.key});
 
   @override
-  State<MyWidget> createState() => _MyWidgetState();
+  State<InitialAlarm> createState() => InitialAlarmtState();
 }
 
-class _MyWidgetState extends State<MyWidget> {
+class InitialAlarmtState extends State<InitialAlarm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +18,7 @@ class _MyWidgetState extends State<MyWidget> {
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         title: const Text(
-          "카테고리 선택",
+          "알림 시간",
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w600,
@@ -39,7 +40,13 @@ class _MyWidgetState extends State<MyWidget> {
                 width: 350,
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreen()),
+                    );
+                  },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.black),
                   ),
