@@ -11,6 +11,19 @@ var categoryItem = [
   '영어',
   'etc',
 ];
+
+final List<bool> _selectedCategorys = <bool>[
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+];
+
 var categoryimage = [
   'images/atom.png',
 ];
@@ -23,7 +36,7 @@ class CategorySelect extends StatefulWidget {
 }
 
 class _CategorySelectState extends State<CategorySelect> {
-  bool check = false;
+  //bool check = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +71,8 @@ class _CategorySelectState extends State<CategorySelect> {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              check = !check;
+                              _selectedCategorys[index] =
+                                  !_selectedCategorys[index];
                             });
                           },
                           child: Container(
@@ -72,7 +86,9 @@ class _CategorySelectState extends State<CategorySelect> {
                               // ),
                               borderRadius: BorderRadius.circular(15),
                               border: Border.all(
-                                  color: check ? Colors.blue : Colors.black,
+                                  color: _selectedCategorys[index]
+                                      ? Colors.blue
+                                      : Colors.black,
                                   width: 3.5),
                             ),
                           ),
