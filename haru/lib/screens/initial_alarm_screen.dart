@@ -28,13 +28,13 @@ class InitialAlarmtState extends State<InitialAlarm> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: 7,
-            vertical: 80,
+            horizontal: 40,
+            vertical: 100,
           ),
           child: Column(
             children: [
               const SizedBox(
-                height: 50,
+                height: 550,
               ),
               SizedBox(
                 width: 350,
