@@ -81,7 +81,7 @@ class _CategorySelectState extends State<CategorySelect> {
                           categoryItem[index],
                           style: const TextStyle(
                             fontSize: 15,
-                            fontWeight: FontWeight.w700,
+                            fontWeight: FontWeight.w800,
                           ),
                         ),
                       ],
