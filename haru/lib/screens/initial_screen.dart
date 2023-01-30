@@ -58,7 +58,7 @@ class _CategorySelectState extends State<CategorySelect> {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              check = true;
+                              check = !check;
                             });
                           },
                           child: Container(
