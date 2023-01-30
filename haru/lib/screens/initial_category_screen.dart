@@ -47,7 +47,7 @@ class CategorySelect extends StatefulWidget {
 }
 
 class _CategorySelectState extends State<CategorySelect> {
-  //bool check = false;
+  bool check = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,8 +82,7 @@ class _CategorySelectState extends State<CategorySelect> {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              _selectedCategorys[index] =
-                                  !_selectedCategorys[index];
+                              check = !check;
                             });
                           },
                           child: Container(
@@ -97,9 +96,7 @@ class _CategorySelectState extends State<CategorySelect> {
                               // ),
                               borderRadius: BorderRadius.circular(15),
                               border: Border.all(
-                                  color: _selectedCategorys[index]
-                                      ? Colors.blue
-                                      : Colors.black,
+                                  color: check ? Colors.blue : Colors.black,
                                   width: 3.5),
                             ),
                             child: Icon(
