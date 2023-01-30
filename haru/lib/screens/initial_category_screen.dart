@@ -102,7 +102,12 @@ class _CategorySelectState extends State<CategorySelect> {
                                       : Colors.black,
                                   width: 3.5),
                             ),
-                            child: Icon(icon_list[index]),
+                            child: Icon(
+                              icon_list[index],
+                              color: _selectedCategorys[index]
+                                  ? Colors.blue
+                                  : Colors.black,
+                            ),
                           ),
                         ),
                         Text(
