@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:haru/screens/home_screen.dart';
 
 var categoryItem = [
   '운동',
@@ -47,7 +48,7 @@ class CategorySelect extends StatefulWidget {
 }
 
 class _CategorySelectState extends State<CategorySelect> {
-  bool check = false;
+  //bool check = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,7 +83,8 @@ class _CategorySelectState extends State<CategorySelect> {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              check = !check;
+                              _selectedCategorys[index] =
+                                  !_selectedCategorys[index];
                             });
                           },
                           child: Container(
@@ -96,7 +98,9 @@ class _CategorySelectState extends State<CategorySelect> {
                               // ),
                               borderRadius: BorderRadius.circular(15),
                               border: Border.all(
-                                  color: check ? Colors.blue : Colors.black,
+                                  color: _selectedCategorys[index]
+                                      ? Colors.blue
+                                      : Colors.black,
                                   width: 3.5),
                             ),
                             child: Icon(
@@ -127,7 +131,13 @@ class _CategorySelectState extends State<CategorySelect> {
                 width: 350,
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreen()),
+                    );
+                  },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.black),
                   ),
