@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:haru/screens/initial.dart';
+import 'package:haru/screens/initial_category_screen.dart';
 
 void main() {
   runApp(const MyApp());
