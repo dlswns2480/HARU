@@ -36,9 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Haru home"),
-      ),
+      body: _children[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
@@ -62,7 +60,6 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         ],
       ),
-      body: _children[_selectedIndex],
     );
   }
 }
