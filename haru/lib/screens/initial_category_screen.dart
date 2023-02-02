@@ -37,6 +37,14 @@ final List<bool> _selectedCategorys = <bool>[
 ];
 
 var categoryimage = [
+  'images/mevius.jpg',
+  'images/mevius.jpg',
+  'images/atom.png',
+  'images/mevius.jpg',
+  'images/atom.png',
+  'images/mevius.jpg',
+  'images/atom.png',
+  'images/workout.jpg',
   'images/atom.png',
 ];
 
@@ -91,11 +99,11 @@ class _InitialCategorySelectState extends State<InitialCategorySelect> {
                             width: 90,
                             height: 90,
                             decoration: BoxDecoration(
-                              // image: const DecorationImage(
-                              //   image: AssetImage(
-                              //     'images/atom.png',
-                              //   ),
-                              // ),
+                              image: DecorationImage(
+                                image: AssetImage(
+                                  categoryimage[index],
+                                ),
+                              ),
                               borderRadius: BorderRadius.circular(15),
                               border: Border.all(
                                   color: _selectedCategorys[index]
@@ -103,13 +111,13 @@ class _InitialCategorySelectState extends State<InitialCategorySelect> {
                                       : Colors.black,
                                   width: 3.5),
                             ),
-                            child: Icon(
-                              size: 50,
-                              icon_list[index],
-                              color: _selectedCategorys[index]
-                                  ? Colors.blue
-                                  : Colors.black,
-                            ),
+                            // child: Icon(
+                            //   size: 50,
+                            //   icon_list[index],
+                            //   color: _selectedCategorys[index]
+                            //       ? Colors.blue
+                            //       : Colors.black,
+                            // ),
                           ),
                         ),
                         Text(
