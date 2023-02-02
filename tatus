@@ -1,0 +1,300 @@
+[33mcommit 5593c05521d48f7aab8a861aa044b4649e9c1796[m[33m ([m[1;36mHEAD -> [m[1;32mexam_01[m[33m, [m[1;31morigin/exam_01[m[33m)[m
+Merge: ad4782f 0a100c9
+Author: 강승민 <rkdtmdals999@naver.com>
+Date:   Thu Feb 2 19:47:54 2023 +0900
+
+    Merge remote-tracking branch 'origin/exam_01' into exam_01
+
+[33mcommit ad4782f05f3ff33f98ffeeb57600e80d08f59ea2[m
+Author: 강승민 <rkdtmdals999@naver.com>
+Date:   Thu Feb 2 19:36:06 2023 +0900
+
+    홈 화면 구현
+
+[33mcommit 0a100c9acb0b4fde515940650547e391f606eb9b[m
+Author: dlswns2480 <dlswns2480@naver.com>
+Date:   Thu Feb 2 18:11:41 2023 +0900
+
+    카테고리에 이미지 추가
+
+[33mcommit 2772c08d24ee80b4343b6157fc792bd12b8d1b6b[m
+Author: 강승민 <rkdtmdals999@naver.com>
+Date:   Thu Feb 2 18:01:31 2023 +0900
+
+    하단 네비게이션 바 아이콘 및 순서 변경
+
+[33mcommit da9c9296d61c8be086726b96bf0909224f690e28[m
+Author: dlswns2480 <dlswns2480@naver.com>
+Date:   Thu Feb 2 17:12:21 2023 +0900
+
+    홈화면 네비게이션 바에서 페이지 이동 기능 추가
+
+[33mcommit ae5a9c11da4efb3eac96c8b2b376dd39e82adf0c[m
+Author: 20192931 <gowhidol2@gmail.com>
+Date:   Mon Jan 30 21:19:24 2023 +0900
+
+    Fix Initial Alarm Page
+
+[33mcommit 8d8e77f3a61320db6c56c401beb79ad1b0fa23fe[m
+Author: dlswns2480 <dlswns2480@naver.com>
+Date:   Mon Jan 30 21:15:32 2023 +0900
+
+    initail category화면 -> initial alarm화면 -> home_screen
+
+[33mcommit f4641cc7a4177960bd74c4bbbac7da8b73d91821[m
+Author: 20192931 <gowhidol2@gmail.com>
+Date:   Mon Jan 30 21:12:12 2023 +0900
+
+    Make Initial Alarm Page2
+
+[33mcommit 68823b661636c7109edb601bc85a78181151a6bd[m
+Author: 20192931 <gowhidol2@gmail.com>
+Date:   Mon Jan 30 21:10:49 2023 +0900
+
+    Make Initial Alarm Page
+
+[33mcommit 17417ac4b2a05877ce988a6b642ad17fbb0faf8a[m
+Author: dlswns2480 <dlswns2480@naver.com>
+Date:   Mon Jan 30 21:07:19 2023 +0900
+
+    카테고리 선택화면에서 홈화면으로 이동하는거 해봄
+
+[33mcommit 7b4b0b5b338ac87d13e15e10272023990a819dec[m
+Author: 강승민 <rkdtmdals999@naver.com>
+Date:   Mon Jan 30 21:01:03 2023 +0900
+
+    Create home screen bottom navigation bar
+
+[33mcommit bcaac9d8a253e1ba51cc24976a26bfbbd400977f[m
+Author: Koosungyoon <gusungyoon123@naver.com>
+Date:   Mon Jan 30 20:51:40 2023 +0900
+
+    Update IconList
+
+[33mcommit e7bb103f3f86415a88544d914072c8f33d0a3894[m
+Author: dlswns2480 <dlswns2480@naver.com>
+Date:   Mon Jan 30 20:45:17 2023 +0900
+
+    Change Icon size
+
+[33mcommit cd52bbebdf7b0e9cf967644678e26a358aa27c00[m
+Author: dlswns2480 <dlswns2480@naver.com>
+Date:   Mon Jan 30 20:44:17 2023 +0900
+
+    Click Icon -> Icon Color changed
+
+[33mcommit 3fc655c35c9625cf4313d7a57c1ae4af2650e94c[m
+Author: dlswns2480 <dlswns2480@naver.com>
+Date:   Mon Jan 30 20:43:32 2023 +0900
+
+    Insert Icon each index
+
+[33mcommit 0928763c24abb54a912d6e3570cdfcc20b643e7a[m
+Author: Koosungyoon <gusungyoon123@naver.com>
+Date:   Mon Jan 30 20:32:07 2023 +0900
+
+    아이콘 각자 선택 기능 구현
+
+[33mcommit 3d2c32a9e38689a70429de119a263373ac1c982b[m
+Author: dlswns2480 <54973090+dlswns2480@users.noreply.github.com>
+Date:   Mon Jan 30 20:23:14 2023 +0900
+
+    Remove all content
+
+[33mcommit 5238f55ff6f1fe06977f17a06835665473558c32[m
+Author: dlswns2480 <dlswns2480@naver.com>
+Date:   Mon Jan 30 20:20:28 2023 +0900
+
+    Move initial_screen.dart content to initial_category_screen.dart
+
+[33mcommit 1007c2ee74b2824e81ac65fe8aa136f0313c3d17[m
+Merge: 660d6b7 c4d1ec9
+Author: dlswns2480 <dlswns2480@naver.com>
+Date:   Mon Jan 30 20:18:55 2023 +0900
+
+    Merge branch 'exam_01' of https://github.com/dlswns2480/HARU into exam_01
+
+[33mcommit 660d6b7d9710133471c053fc71db48e132049c1a[m
+Author: dlswns2480 <dlswns2480@naver.com>
+Date:   Mon Jan 30 20:17:04 2023 +0900
+
+    Move initial_screen.dart content to initial_category_screen.dart
+
+[33mcommit c4d1ec94ea2e17e2ff5d949da00bedc27db15ec3[m
+Author: Koosungyoon <gusungyoon123@naver.com>
+Date:   Mon Jan 30 20:13:15 2023 +0900
+
+    Inkwell_setState() fnc 수정
+
+[33mcommit 2685f4a846b1b39cd3f1d125cce58f1b75a7efb1[m
+Author: dlswns2480 <dlswns2480@naver.com>
+Date:   Mon Jan 30 20:01:46 2023 +0900
+
+    Inkwell내부 setState함수 수정
+    
+    클릭하면 check를 true로 바꿔주는 것으로 수정(원래는 삼항연산자를 이용)
+
+[33mcommit 1e03fbaa060ffcd076b8b60d5d944e57b94711e7[m
+Author: dlswns2480 <dlswns2480@naver.com>
+Date:   Mon Jan 30 19:53:17 2023 +0900
+
+    Add InkWell event
+
+[33mcommit 2f08be9b9ded357b08a5863c0e92e479a4976268[m
+Author: 20192931 <gowhidol2@gmail.com>
+Date:   Mon Jan 30 18:26:50 2023 +0900
+
+    Switch File
+
+[33mcommit 787fa94ce8327ad308fdfaaef9d957dabce44928[m
+Author: 강승민 <rkdtmdals999@naver.com>
+Date:   Mon Jan 30 17:39:56 2023 +0900
+
+    Update files
+
+[33mcommit 883a25be651fa4fcbf5b414df47d235fec03c98f[m
+Author: 20192931 <gowhidol2@gmail.com>
+Date:   Sun Jan 29 22:00:30 2023 +0900
+
+    Withhold image error
+
+[33mcommit 46f4b833b53421962afa6f32cac283fdb6013b15[m
+Author: 20192931 <gowhidol2@gmail.com>
+Date:   Sun Jan 29 21:50:52 2023 +0900
+
+    Make an Initial Page
+
+[33mcommit df5d1124cc4732b805b9420a0fa11d4fa7dd9561[m
+Author: dlswns2480 <54973090+dlswns2480@users.noreply.github.com>
+Date:   Fri Jan 27 15:21:06 2023 +0900
+
+    Delete .DS_Store
+
+[33mcommit 72138dd27fec0c2866ee0ecede84d8d9c0ba0d83[m
+Author: 20192931 <gowhidol2@gmail.com>
+Date:   Fri Jan 27 15:16:53 2023 +0900
+
+    Modify pubspec.lock and pubspec.yaml
+
+[33mcommit f6b2e871809e732dc136a506ded19f9a68db7fc8[m
+Author: 강승민 <rkdtmdals999@naver.com>
+Date:   Fri Jan 27 15:14:37 2023 +0900
+
+    Modify pubspec.lock and pubspec.yaml
+
+[33mcommit 039294139d9d5bce53e5c57515d8df0fef3114a5[m
+Author: dlswns2480 <dlswns2480@naver.com>
+Date:   Fri Jan 27 14:24:47 2023 +0900
+
+    Modify pubspec.yaml file
+    
+    Add adobe_xd package in dependencies
+
+[33mcommit 2bb18607588123e94af5736d681eb4969260c9b0[m
+Merge: 5f1c2fe f9be0d0
+Author: dlswns2480 <dlswns2480@naver.com>
+Date:   Fri Jan 27 12:57:43 2023 +0900
+
+    Merge branch 'master' of https://github.com/dlswns2480/HARU
+
+[33mcommit 5f1c2fe3d9c94963dca39ccf3377fc09d60e5b51[m
+Author: dlswns2480 <dlswns2480@naver.com>
+Date:   Fri Jan 27 12:57:14 2023 +0900
+
+    Create flutter initial project
+
+[33mcommit f9be0d0ed96dd05f847b974034d9bbb550bacb0f[m
+Author: dlswns2480 <54973090+dlswns2480@users.noreply.github.com>
+Date:   Tue Jan 24 16:49:34 2023 +0900
+
+    Change title
+
+[33mcommit 7f8fd2161f01770202e78a77e701b4f8818ac40b[m
+Author: dlswns2480 <54973090+dlswns2480@users.noreply.github.com>
+Date:   Tue Jan 24 16:49:09 2023 +0900
+
+    Align to center
+
+[33mcommit 15e6fced10c4967011d5d91a2d0693e0c14f362e[m
+Author: dlswns2480 <54973090+dlswns2480@users.noreply.github.com>
+Date:   Tue Jan 24 16:48:38 2023 +0900
+
+    Change content
+
+[33mcommit 79dcc93f49160d04b06e1e7a79634887d3d885d3[m
+Author: dlswns2480 <54973090+dlswns2480@users.noreply.github.com>
+Date:   Tue Jan 24 16:47:28 2023 +0900
+
+    Add intoduction content
+
+[33mcommit ba35501b398dcb22ffd55e16ead1ab6f85e5cda4[m
+Author: dlswns2480 <54973090+dlswns2480@users.noreply.github.com>
+Date:   Tue Jan 24 16:46:02 2023 +0900
+
+    Add h2
+
+[33mcommit 5cf3b6f8233e70b2d3f8984b7ff2189b4cb2881a[m
+Author: dlswns2480 <54973090+dlswns2480@users.noreply.github.com>
+Date:   Tue Jan 24 16:40:49 2023 +0900
+
+    Add Icon
+
+[33mcommit 797abb2c02ac5259a55036a5d4649e158afd01e6[m
+Author: dlswns2480 <54973090+dlswns2480@users.noreply.github.com>
+Date:   Tue Jan 24 16:38:10 2023 +0900
+
+    Change Header
+
+[33mcommit f65dbed2e43715121a978ee848563d89abd3d0bb[m
+Author: dlswns2480 <54973090+dlswns2480@users.noreply.github.com>
+Date:   Tue Jan 24 16:36:57 2023 +0900
+
+    Change Header
+
+[33mcommit 3edcfbd78c670c695fb079cd2254393b781b5a70[m
+Author: 20192931 <gowhidol2@gmail.com>
+Date:   Thu Jan 19 00:46:20 2023 +0900
+
+    Start
+
+[33mcommit 59a3e43c2889c087d2daeb36789599db947683f8[m
+Author: 20192931 <gowhidol2@gmail.com>
+Date:   Thu Jan 19 00:27:23 2023 +0900
+
+    back
+
+[33mcommit 8b9a3f468a38118373b78a3c0f77619ee20df4ca[m
+Author: 20192931 <gowhidol2@gmail.com>
+Date:   Thu Jan 19 00:07:01 2023 +0900
+
+    commit
+
+[33mcommit 2afb879b50effb0a9cebb5b576b03f6c42b3411d[m
+Author: dlswns2480 <54973090+dlswns2480@users.noreply.github.com>
+Date:   Wed Jan 18 23:29:31 2023 +0900
+
+    Make README look nice
+
+[33mcommit e6af901a83c90a60afc90a953fea6d3b0d3b01c5[m
+Author: 강승민 <rkdtmdals999@naver.com>
+Date:   Wed Jan 18 23:27:39 2023 +0900
+
+    Remove test files
+
+[33mcommit 5107909a37b4f7a4be74a36856c72190df85f89b[m
+Author: Koosungyoon <gusungyoon123@naver.com>
+Date:   Wed Jan 18 23:24:48 2023 +0900
+
+     test2
+
+[33mcommit 2b73009293727f1fe9eb6f43f82de16f97700940[m
+Author: 강승민 <rkdtmdals999@naver.com>
+Date:   Wed Jan 18 23:21:23 2023 +0900
+
+    Test
+
+[33mcommit c6a5d1426564749feeec420c5e3ffcb6008d6e4d[m
+Author: dlswns2480 <dlswns2480@naver.com>
+Date:   Wed Jan 18 23:15:05 2023 +0900
+
+    Create README.md
