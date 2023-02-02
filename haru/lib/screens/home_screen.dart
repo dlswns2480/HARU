@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:haru/screens/category_screen.dart';
 import 'package:haru/screens/home_test.dart';
 import 'package:haru/screens/initial_alarm_screen.dart';
-import 'package:haru/screens/initial_category_screen.dart';
 // int screenIndex = 0;
 // List<Widget> _children = [
 //   const Text('카테고리'),
@@ -27,9 +27,10 @@ class _HomeScreenState extends State<HomeScreen> {
     // const Text("1번입니다"),
     // const Text("1번입니다"),
     // const Text("1번입니다"),
+
+    const CategorySelect(),
     const HomeTest(),
     const InitialAlarm(),
-    const InitialCategorySelect(),
   ];
 
   @override
@@ -48,16 +49,16 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "home22",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.mail),
-            label: "alarm",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.category_rounded),
             label: "category",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_rounded),
+            label: "home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.alarm_rounded),
+            label: "alarm",
           )
         ],
       ),
