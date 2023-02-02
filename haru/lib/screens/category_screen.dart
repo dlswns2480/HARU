@@ -127,22 +127,9 @@ class _CategorySelectState extends State<CategorySelect> {
               const SizedBox(
                 height: 50,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 350,
                 height: 50,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const InitialAlarm()),
-                    );
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.black),
-                  ),
-                  child: const Text('다음'),
-                ),
               ),
             ],
           ),
