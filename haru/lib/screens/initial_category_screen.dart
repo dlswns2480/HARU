@@ -4,7 +4,7 @@ import 'package:haru/screens/initial_alarm_screen.dart';
 var categoryItem = [
   '운동',
   '의료',
-  '건강',
+  '건강rkdrkd',
   '명언',
   '과학',
   'IT',
@@ -40,14 +40,14 @@ var categoryimage = [
   'images/atom.png',
 ];
 
-class CategorySelect extends StatefulWidget {
-  const CategorySelect({super.key});
+class InitialCategorySelect extends StatefulWidget {
+  const InitialCategorySelect({super.key});
 
   @override
-  State<CategorySelect> createState() => _CategorySelectState();
+  State<InitialCategorySelect> createState() => _InitialCategorySelectState();
 }
 
-class _CategorySelectState extends State<CategorySelect> {
+class _InitialCategorySelectState extends State<InitialCategorySelect> {
   //bool check = false;
   @override
   Widget build(BuildContext context) {
