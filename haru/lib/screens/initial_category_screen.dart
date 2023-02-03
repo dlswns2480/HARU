@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:haru/screens/initial_alarm_screen.dart';
 
 var categoryItem = [
@@ -44,7 +45,7 @@ var categoryimage = [
   'assets/images/atom.png',
   'assets/images/mevius.jpg',
   'assets/images/atom.png',
-  'assets/images/workout.jpg',
+  'assets/images/mevius.jpg',
   'assets/images/atom.png',
 ];
 
@@ -56,11 +57,69 @@ class InitialCategorySelect extends StatefulWidget {
 }
 
 class _InitialCategorySelectState extends State<InitialCategorySelect> {
+  DateTime? currentBackPressTime;
+  // Future<bool> onWillPop() async {
+  // return await showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return AlertDialog(
+  //         backgroundColor: Colors.blue,
+  //         title: const Text(
+  //           "Do you want to exit?",
+  //           style: TextStyle(color: Colors.white),
+  //         ),
+  //         actions: [
+  //           TextButton(
+  //               onPressed: () {
+  //                 Navigator.pop(context, true);
+  //               },
+  //               child: const Text('끝내기')),
+  //           TextButton(
+  //               onPressed: () {
+  //                 Navigator.pop(context, false);
+  //               },
+  //               child: const Text('아니요')),
+  //         ],
+  //       );
+  //     });
+  //   DateTime now = DateTime.now();
+
+  //   if (currentBackPressTime == null ||
+  //       now.difference(currentBackPressTime!) > const Duration(seconds: 2)) {
+  //     currentBackPressTime = now;
+  //     const msg = "'뒤로'버튼을 한 번 더 누르면 종료됩니다.";
+  //     Fluttertoast.showToast(msg: "exit_warning");
+  //     return Future.value(false);
+  //   }
+  //   return Future.value(true);
+  // }
+  Future<bool> onWillPop() {
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("Do you want to exit the app?"),
+        actions: <Widget>[
+          TextButton(
+            child: const Text("No"),
+            onPressed: () => Navigator.pop(context, false),
+          ),
+          TextButton(
+            onPressed: () => SystemNavigator.pop(),
+            //Navigator.pop(context, true),
+
+            child: const Text("Yes"),
+          )
+        ],
+      ),
+    ).then((value) => value ?? false);
+  }
+
   //bool check = false;
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async => false,
+      onWillPop: onWillPop, //() async => false,
+
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
