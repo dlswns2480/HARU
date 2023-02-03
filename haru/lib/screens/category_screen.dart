@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 var categoryItem = [
   '운동',
@@ -48,6 +49,44 @@ class CategorySelect extends StatefulWidget {
 
 class _CategorySelectState extends State<CategorySelect> {
   //bool check = false;
+
+  late SharedPreferences prefs;
+
+  Future initprefs() async {
+    prefs = await SharedPreferences.getInstance();
+    final selectedCategory = prefs.getStringList('selectedCategory') ?? [];
+    if (selectedCategory.isNotEmpty) {
+      for (int i = 0; i < categoryItem.length; i++) {
+        if (selectedCategory.contains(categoryItem[i])) {
+          setState(() {
+            _selectedCategorys[i] = true;
+          });
+        }
+      }
+    } else {
+      await prefs.setStringList('selectedCategory', []);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    initprefs();
+  }
+
+  onCategoryTap(int index) async {
+    final selectedCategory = prefs.getStringList('selectedCategory') ?? [];
+    if (_selectedCategorys[index]) {
+      selectedCategory.remove(categoryItem[index]);
+    } else {
+      selectedCategory.add(categoryItem[index]);
+    }
+    await prefs.setStringList('selectedCategory', selectedCategory);
+    setState(() {
+      _selectedCategorys[index] = !_selectedCategorys[index];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,8 +121,9 @@ class _CategorySelectState extends State<CategorySelect> {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              _selectedCategorys[index] =
-                                  !_selectedCategorys[index];
+                              onCategoryTap(index);
+                              // _selectedCategorys[index] =
+                              //     !_selectedCategorys[index];
                             });
                           },
                           child: Container(
