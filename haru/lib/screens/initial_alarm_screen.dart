@@ -1,66 +1,196 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:haru/screens/home_screen.dart';
+import 'package:intl/intl.dart';
 
 class InitialAlarm extends StatefulWidget {
-  const InitialAlarm({super.key});
+  const InitialAlarm({Key? key}) : super(key: key);
 
   @override
-  State<InitialAlarm> createState() => InitialAlarmtState();
+  _InitialAlarm createState() => _InitialAlarm();
 }
 
-class InitialAlarmtState extends State<InitialAlarm> {
+class _InitialAlarm extends State<InitialAlarm> {
+  var data = <String>[];
+  int counter = 5;
+
+  final globalKey = GlobalKey<AnimatedListState>();
+  DateTime? tempPickedDate;
+  DateTime _selectedDate = DateTime.now();
+  final TextEditingController alarmController =
+      TextEditingController(text: '-');
+  @override
+  void initState() {
+    // for (var i = 0; i < counter; i++) {
+    //   data.add('${i + 1}');
+    // }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: Scaffold(
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        elevation: 3,
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          elevation: 3,
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.black,
-          title: const Text(
-            "알림 시간",
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          automaticallyImplyLeading: false,
-        ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 40,
-              vertical: 100,
-            ),
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 400,
-                ),
-                SizedBox(
-                  width: 350,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const HomeScreen()),
-                      );
-                    },
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.black),
-                    ),
-                    child: const Text('다음'),
-                  ),
-                ),
-              ],
-            ),
+        foregroundColor: Colors.black,
+        title: const Text(
+          "알림 설정",
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w600,
           ),
         ),
       ),
+      body: Column(
+        children: [
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 7,
+                vertical: 80,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  buildAddBtn(),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  ListView.separated(
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.all(20),
+                    itemCount: data.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return ListTile(
+                        key: ValueKey(data[index]),
+                        title: Text(
+                          data[index],
+                          textAlign: TextAlign.center,
+                        ),
+                        trailing: IconButton(
+                          icon: const Icon(Icons.remove_circle_outline_rounded,
+                              color: Colors.red),
+                          onPressed: () => onDelete(context, index),
+                        ),
+                      );
+                    },
+                    separatorBuilder: (BuildContext context, int index) =>
+                        const Divider(
+                      height: 10,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 360,
+            height: 50,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                );
+              },
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.black),
+              ),
+              child: const Text('다음'),
+            ),
+          ),
+        ],
+      ),
     );
+  }
+
+  Widget buildAddBtn() {
+    return GestureDetector(
+      child: FloatingActionButton(
+        backgroundColor: Colors.black,
+        child: const Icon(Icons.add),
+        onPressed: () {
+          _selectDate();
+          // data.add('${++counter}');
+          // globalKey.currentState!.insertItem(data.length - 1);
+        },
+      ),
+    );
+  }
+
+  void onDelete(context, index) {
+    setState(() {
+      data.removeAt(index);
+    });
+  }
+
+  _selectDate() async {
+    DateTime? pickedDate = await showModalBottomSheet<DateTime>(
+      backgroundColor: ThemeData.light().scaffoldBackgroundColor,
+      context: context,
+      builder: (context) {
+        // DateTime tempPickedDate;
+        return SizedBox(
+          height: 300,
+          child: Column(
+            children: <Widget>[
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    CupertinoButton(
+                      child: const Text('취소'),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        FocusScope.of(context).unfocus();
+                      },
+                    ),
+                    CupertinoButton(
+                      child: const Text('완료'),
+                      onPressed: () {
+                        Navigator.of(context).pop(tempPickedDate);
+                        FocusScope.of(context).unfocus();
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              const Divider(
+                height: 0,
+                thickness: 1,
+              ),
+              Expanded(
+                child: Container(
+                  child: CupertinoDatePicker(
+                    backgroundColor: ThemeData.light().scaffoldBackgroundColor,
+                    initialDateTime: DateTime.now(),
+                    mode: CupertinoDatePickerMode.time,
+                    onDateTimeChanged: (DateTime dateTime) {
+                      tempPickedDate = dateTime;
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+    if (pickedDate != null && pickedDate != _selectedDate) {
+      setState(() {
+        _selectedDate = pickedDate;
+        alarmController.text = pickedDate.toString();
+        data.add(convertDateTimeDisplay(alarmController.text));
+      });
+    }
+  }
+
+  String convertDateTimeDisplay(String date) {
+    final DateFormat displayFormater = DateFormat('yyyy-MM-dd HH:mm:ss.SSS');
+    final DateFormat serverFormater = DateFormat('hh-mm-aaa');
+    final DateTime displayDate = displayFormater.parse(date);
+    return alarmController.text = serverFormater.format(displayDate);
   }
 }
