@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:haru/screens/initial_alarm_screen.dart';
 
 var categoryItem = [
   '운동',
@@ -37,7 +36,7 @@ final List<bool> _selectedCategorys = <bool>[
 ];
 
 var categoryimage = [
-  'images/atom.png',
+  'assets/images/atom.png',
 ];
 
 class CategorySelect extends StatefulWidget {
