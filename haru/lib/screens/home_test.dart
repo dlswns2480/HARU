@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+DateTime dt = DateTime.now();
+
 class HomeTest extends StatefulWidget {
   const HomeTest({super.key});
 
@@ -46,8 +48,8 @@ class _HomeTestState extends State<HomeTest> {
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
+                        children: [
+                          const Text(
                             '오늘의 지식',
                             style: TextStyle(
                               color: Colors.white,
@@ -59,10 +61,11 @@ class _HomeTestState extends State<HomeTest> {
                             //       color: Colors.white,
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0, 4, 0, 0),
                             child: Text(
-                              '2023-02-01',
-                              style: TextStyle(
+                              '${dt.year}.${dt.month}.${dt.day}',
+                              style: const TextStyle(
                                 color: Colors.white60,
                                 fontSize: 15,
                               ),
