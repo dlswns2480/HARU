@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:haru/screens/home_screen.dart';
 import 'package:intl/intl.dart';
 
+final List<String> data = <String>[];
+
 class InitialAlarm extends StatefulWidget {
   const InitialAlarm({Key? key}) : super(key: key);
 
@@ -11,8 +13,7 @@ class InitialAlarm extends StatefulWidget {
 }
 
 class _InitialAlarm extends State<InitialAlarm> {
-  var data = <String>[];
-  int counter = 5;
+  // int counter = 5;
 
   final globalKey = GlobalKey<AnimatedListState>();
   DateTime? tempPickedDate;
