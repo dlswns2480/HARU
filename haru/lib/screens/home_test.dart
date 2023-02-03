@@ -15,6 +15,7 @@ class _HomeTestState extends State<HomeTest> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        physics: const NeverScrollableScrollPhysics(),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,7 +53,8 @@ class _HomeTestState extends State<HomeTest> {
                             '오늘의 지식',
                             style: TextStyle(
                               color: Colors.white,
-                              fontWeight: FontWeight.w600,
+                              fontFamily: "NanumSquareRound",
+                              fontWeight: FontWeight.w400,
                               fontSize: 30,
                             ),
                             // style: FlutterFlowTheme.of(context).title1.override(
@@ -65,7 +67,7 @@ class _HomeTestState extends State<HomeTest> {
                             child: Text(
                               '${dt.year}.${dt.month}.${dt.day}',
                               style: const TextStyle(
-                                color: Colors.white60,
+                                color: Colors.white70,
                                 fontSize: 15,
                               ),
 
