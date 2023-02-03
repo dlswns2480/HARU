@@ -37,15 +37,15 @@ final List<bool> _selectedCategorys = <bool>[
 ];
 
 var categoryimage = [
-  'images/mevius.jpg',
-  'images/mevius.jpg',
-  'images/atom.png',
-  'images/mevius.jpg',
-  'images/atom.png',
-  'images/mevius.jpg',
-  'images/atom.png',
-  'images/workout.jpg',
-  'images/atom.png',
+  'assets/images/mevius.jpg',
+  'assets/images/mevius.jpg',
+  'assets/images/atom.png',
+  'assets/images/mevius.jpg',
+  'assets/images/atom.png',
+  'assets/images/mevius.jpg',
+  'assets/images/atom.png',
+  'assets/images/workout.jpg',
+  'assets/images/atom.png',
 ];
 
 class InitialCategorySelect extends StatefulWidget {

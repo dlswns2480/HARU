@@ -36,7 +36,7 @@ final List<bool> _selectedCategorys = <bool>[
 ];
 
 var categoryimage = [
-  'images/atom.png',
+  'assets/images/atom.png',
 ];
 
 class CategorySelect extends StatefulWidget {

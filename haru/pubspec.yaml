@@ -71,16 +71,47 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
-   - images/workout.jpg
-   - images/atom.png
-   - images/mevius.jpg
+   - assets/images/workout.jpg
+   - assets/images/atom.png
+   - assets/images/mevius.jpg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-
+  fonts:
+    - family: NanumSquare
+      fonts:
+        - asset: assets/fonts/NanumSquare/NanumSquareL.otf
+          weight: 300
+        - asset: assets/fonts/NanumSquare/NanumSquareR.otf
+          weight: 400
+        - asset: assets/fonts/NanumSquare/NanumSquareB.otf  
+          weight: 700
+        - asset: assets/fonts/NanumSquare/NanumSquareEB.otf 
+          weight: 800 
+        # - asset: assets/fonts/NanumSquareOTF_acL.otf
+    - family: NanumSquareRound
+      fonts:
+        - asset: assets/fonts/NanumSquareRound/NanumSquareRoundOTFL.otf
+          weight: 300
+        - asset: assets/fonts/NanumSquareRound/NanumSquareRoundOTFR.otf
+          weight: 400
+        - asset: assets/fonts/NanumSquareRound/NanumSquareRoundOTFB.otf
+          weight: 700
+        - asset: assets/fonts/NanumSquareRound/NanumSquareRoundOTFEB.otf
+          weight: 800 
+    - family: NanumGothicEco
+      fonts:
+        - asset: assets/fonts/NanumGothicEco/NanumGothicEco.otf
+          weight: 400
+        - asset: assets/fonts/NanumGothicEco/NanumGothicEcoBold.otf
+          weight: 700
+        - asset: assets/fonts/NanumGothicEco/NanumGothicEcoExtraBold.otf
+          weight: 800
+    
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a

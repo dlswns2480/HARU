@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 DateTime dt = DateTime.now();
@@ -113,9 +112,11 @@ class _HomeTestState extends State<HomeTest> {
                                           Text(
                                             '"Think Different"',
                                             style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 25,
-                                                fontWeight: FontWeight.w600),
+                                              color: Colors.white,
+                                              fontSize: 30,
+                                              fontFamily: 'NanumSquare',
+                                              fontWeight: FontWeight.w300,
+                                            ),
                                             // style: FlutterFlowTheme.of(context).bodyText1.override(
                                             //       fontFamily: 'Poppins',
                                             //       color: Colors.white,
@@ -141,13 +142,15 @@ class _HomeTestState extends State<HomeTest> {
                                           Icon(
                                             Icons.person,
                                             color: Colors.white,
-                                            size: 25,
+                                            size: 20,
                                           ),
                                           Text(
                                             'Steve Jobs',
                                             style: TextStyle(
-                                              color: Colors.white54,
-                                            ),
+                                                color: Colors.white54,
+                                                fontFamily: 'NanumSquare',
+                                                fontWeight: FontWeight.w300,
+                                                fontSize: 20),
                                             // style: FlutterFlowTheme.of(context).bodyText1.override(
                                             //       fontFamily: 'Poppins',
                                             //       color: Colors.white,
