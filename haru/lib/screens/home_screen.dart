@@ -28,8 +28,8 @@ class _HomeScreenState extends State<HomeScreen> {
     // const Text("1번입니다"),
     // const Text("1번입니다"),
 
-    const CategorySelect(),
     const HomeTest(),
+    const CategorySelect(),
     const InitialAlarm(),
   ];
 
@@ -47,17 +47,17 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.category_rounded),
-            label: "category",
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.home_rounded),
             label: "home",
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.category_rounded),
+            label: "category",
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.alarm_rounded),
             label: "alarm",
-          )
+          ),
         ],
       ),
     );
