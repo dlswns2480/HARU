@@ -29,11 +29,12 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  adobe_xd: ^2.0.1
+
   http: ^0.12.0
   flutter:
 
     sdk: flutter
+  flutter_svg: ^2.0.0
   #shared_preferences: "<newest version>"
 
 

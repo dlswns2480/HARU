@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:haru/screens/initial_alarm_screen.dart';
 
 var categoryItem = [
   '운동',
@@ -12,7 +11,7 @@ var categoryItem = [
   '영어',
   'etc',
 ];
-final List<IconData> icon_list = <IconData>[
+final List<IconData> iconList = <IconData>[
   Icons.health_and_safety_outlined,
   Icons.medical_information,
   Icons.health_and_safety_outlined,
@@ -105,7 +104,7 @@ class _CategorySelectState extends State<CategorySelect> {
                             ),
                             child: Icon(
                               size: 50,
-                              icon_list[index],
+                              iconList[index],
                               color: _selectedCategorys[index]
                                   ? Colors.blue
                                   : Colors.black,

@@ -12,7 +12,7 @@ var categoryItem = [
   '영어',
   'etc',
 ];
-final List<IconData> icon_list = <IconData>[
+final List<IconData> iconList = <IconData>[
   Icons.health_and_safety_outlined,
   Icons.medical_information,
   Icons.health_and_safety_outlined,
