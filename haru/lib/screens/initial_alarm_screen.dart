@@ -40,7 +40,8 @@ class _InitialAlarm extends State<InitialAlarm> {
           "알림 설정",
           style: TextStyle(
             fontSize: 24,
-            fontWeight: FontWeight.w600,
+            fontFamily: "NanumSquare",
+            // fontWeight: FontWeight.w600,
           ),
         ),
       ),
@@ -70,12 +71,14 @@ class _InitialAlarm extends State<InitialAlarm> {
                           data[index],
                           textAlign: TextAlign.center,
                           style: const TextStyle(
-                            fontSize: 50,
+                            fontSize: 40,
+                            fontFamily: "NanumSquareRound",
                           ),
                         ),
                         trailing: IconButton(
                           icon: const Icon(
-                            Icons.remove_circle_outline_rounded,
+                            Icons.close,
+                            // Icons.remove_circle_outline_rounded,
                             color: Colors.red,
                             size: 30,
                           ),

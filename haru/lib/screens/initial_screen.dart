@@ -28,14 +28,33 @@ class _InitialScreenState extends State<InitialScreen> {
       onWillPop: () async => false,
       child: MediaQuery(
         data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-        child: const Scaffold(
-          backgroundColor: Colors.white,
-          body: Text(
-            "하루지식",
-            style: TextStyle(
-              fontSize: 50,
+        child: Scaffold(
+          backgroundColor: const Color(0xFFACD2ED),
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Text(
+                  "HARU",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontFamily: "Megrim",
+                    color: Colors.white,
+                  ),
+                ),
+                Text(
+                  "하루 한 번 지식",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: "NanumSquare",
+                    fontWeight: FontWeight.w700,
+                    fontSize: 15,
+                    color: Colors.black38,
+                  ),
+                ),
+              ],
             ),
-            textAlign: TextAlign.center,
           ),
           //Container(
           //height : MediaQuery.of(context).size.height,
