@@ -61,7 +61,7 @@ class _InitialAlarm extends State<InitialAlarm> {
                   ),
                   ListView.separated(
                     shrinkWrap: true,
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(10),
                     itemCount: data.length,
                     itemBuilder: (BuildContext context, int index) {
                       return ListTile(
@@ -69,17 +69,24 @@ class _InitialAlarm extends State<InitialAlarm> {
                         title: Text(
                           data[index],
                           textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 50,
+                          ),
                         ),
                         trailing: IconButton(
-                          icon: const Icon(Icons.remove_circle_outline_rounded,
-                              color: Colors.red),
+                          icon: const Icon(
+                            Icons.remove_circle_outline_rounded,
+                            color: Colors.red,
+                            size: 30,
+                          ),
                           onPressed: () => onDelete(context, index),
                         ),
                       );
                     },
                     separatorBuilder: (BuildContext context, int index) =>
                         const Divider(
-                      height: 10,
+                      height: 20,
+                      thickness: 2,
                     ),
                   ),
                 ],
@@ -179,7 +186,7 @@ class _InitialAlarm extends State<InitialAlarm> {
         );
       },
     );
-    if (pickedDate != null && pickedDate != _selectedDate) {
+    if (pickedDate != null) {
       setState(() {
         _selectedDate = pickedDate;
         alarmController.text = pickedDate.toString();
@@ -190,7 +197,7 @@ class _InitialAlarm extends State<InitialAlarm> {
 
   String convertDateTimeDisplay(String date) {
     final DateFormat displayFormater = DateFormat('yyyy-MM-dd HH:mm:ss.SSS');
-    final DateFormat serverFormater = DateFormat('hh-mm-aaa');
+    final DateFormat serverFormater = DateFormat('hh:mm  aaa');
     final DateTime displayDate = displayFormater.parse(date);
     return alarmController.text = serverFormater.format(displayDate);
   }
