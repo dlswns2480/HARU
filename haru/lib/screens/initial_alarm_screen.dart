@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:haru/screens/category_practice.dart';
+import 'package:haru/screens/home_test%202.dart';
 import 'package:intl/intl.dart';
 
 final List<String> data = <String>[];
@@ -35,6 +37,7 @@ class _InitialAlarm extends State<InitialAlarm> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           elevation: 3,
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
@@ -103,37 +106,71 @@ class _InitialAlarm extends State<InitialAlarm> {
                 ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                SizedBox(
-                  width: 100,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const InitialAlarm()),
-                      );
-                    },
-                    style: ButtonStyle(
-                      alignment: Alignment.center,
-                      backgroundColor: MaterialStateProperty.all(Colors.black),
-                    ),
-                    child: const Text(
-                      'NEXT',
-                      style: TextStyle(
-                        fontFamily: "Megrim",
-                        fontWeight: FontWeight.w900,
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // const SizedBox(
+                  //   width: 20,
+                  // ),
+                  SizedBox(
+                    width: 100,
+                    height: 50,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const CategoryScreenWidget()),
+                        );
+                      },
+                      style: ButtonStyle(
+                        alignment: Alignment.center,
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.black),
+                      ),
+                      child: const Text(
+                        '이전',
+                        style: TextStyle(
+                          fontFamily: "Megrim",
+                          fontWeight: FontWeight.w900,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  width: 30,
-                ),
-              ],
+
+                  SizedBox(
+                    width: 100,
+                    height: 50,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomeTest()),
+                        );
+                      },
+                      style: ButtonStyle(
+                        alignment: Alignment.center,
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.black),
+                      ),
+                      child: const Text(
+                        '다음',
+                        style: TextStyle(
+                          fontFamily: "Megrim",
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                    ),
+                  ),
+                  // const SizedBox(
+                  //   width: 0,
+                  // ),
+                ],
+              ),
             ),
           ],
         ),

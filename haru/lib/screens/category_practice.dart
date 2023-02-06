@@ -107,9 +107,9 @@ class _CategoryScreenWidgetState extends State<CategoryScreenWidget> {
               width: 400.0,
               color: Colors.black12,
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            // const SizedBox(
+            //   height: 10,
+            // ),
             SizedBox(
               height: screenHeight * 0.7,
               child: SingleChildScrollView(
@@ -188,40 +188,49 @@ class _CategoryScreenWidgetState extends State<CategoryScreenWidget> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 20,
+            // const SizedBox(
+            //   height: 10,
+            // ),
+            Container(
+              height: 1.0,
+              width: 400.0,
+              color: Colors.black12,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                SizedBox(
-                  width: 100,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const InitialAlarm()),
-                      );
-                    },
-                    style: ButtonStyle(
-                      alignment: Alignment.center,
-                      backgroundColor: MaterialStateProperty.all(Colors.black),
-                    ),
-                    child: const Text(
-                      'NEXT',
-                      style: TextStyle(
-                        fontFamily: "Megrim",
-                        fontWeight: FontWeight.w900,
+            const SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  SizedBox(
+                    width: 100,
+                    height: 50,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const InitialAlarm()),
+                        );
+                      },
+                      style: ButtonStyle(
+                        alignment: Alignment.center,
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.black),
+                      ),
+                      child: const Text(
+                        '다음',
+                        style: TextStyle(
+                          fontFamily: "Megrim",
+                          fontWeight: FontWeight.w900,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  width: 30,
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),
