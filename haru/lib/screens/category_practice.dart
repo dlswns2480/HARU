@@ -1,5 +1,6 @@
 // import '../flutter_flow/flutter_flow_theme.dart';
 // import '../flutter_flow/flutter_flow_util.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:haru/screens/initial_alarm_screen.dart';
@@ -61,6 +62,7 @@ class _CategoryScreenWidgetState extends State<CategoryScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     return WillPopScope(
       onWillPop: onWillPop,
       child: Scaffold(
@@ -109,7 +111,7 @@ class _CategoryScreenWidgetState extends State<CategoryScreenWidget> {
               height: 10,
             ),
             SizedBox(
-              height: 600,
+              height: screenHeight * 0.7,
               child: SingleChildScrollView(
                 child: Column(
                   children: [
