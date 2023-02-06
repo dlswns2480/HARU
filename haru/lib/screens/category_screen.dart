@@ -10,7 +10,16 @@ var categoryItem = [
   'IT',
   '경제',
   '영어',
-  'etc',
+];
+final List<String> imageList = <String>[
+  'https://images.unsplash.com/photo-1584921466621-d3a283cd3744?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2148&q=80',
+  "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2NpZW5jZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+  "https://images.unsplash.com/photo-1454789548928-9efd52dc4031?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c3BhY2V8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
+  'https://images.unsplash.com/photo-1573495804683-641191e042ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2369&q=80',
+  'https://images.unsplash.com/photo-1604594849809-dfedbc827105?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80',
+  'https://images.unsplash.com/photo-1539632346654-dd4c3cffad8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80',
+  'https://images.unsplash.com/photo-1603807008857-ad66b70431aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2373&q=80',
+  'https://images.unsplash.com/photo-1618933974351-e38629016464?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2333&q=80',
 ];
 final List<IconData> iconList = <IconData>[
   Icons.health_and_safety_outlined,
@@ -25,7 +34,6 @@ final List<IconData> iconList = <IconData>[
 ];
 
 final List<bool> _selectedCategorys = <bool>[
-  false,
   false,
   false,
   false,
@@ -92,87 +100,175 @@ class _CategorySelectState extends State<CategorySelect> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        elevation: 3,
         backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
+        automaticallyImplyLeading: false,
         title: const Text(
-          "카테고리 선택",
+          'Choose your interests!',
           style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w600,
+            color: Colors.black,
+            fontSize: 30,
+            fontFamily: "Megrim",
+            fontWeight: FontWeight.w900,
           ),
         ),
+        actions: const [],
+        centerTitle: true,
+        elevation: 0,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 7,
-            vertical: 80,
-          ),
-          child: Column(
-            children: [
-              GridView.count(
-                shrinkWrap: true,
-                crossAxisCount: 3,
-                children: List.generate(9, (index) {
-                  return Center(
-                    child: Column(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            setState(() {
-                              onCategoryTap(index);
-                              // _selectedCategorys[index] =
-                              //     !_selectedCategorys[index];
-                            });
-                          },
-                          child: Container(
-                            width: 90,
-                            height: 90,
-                            decoration: BoxDecoration(
-                              // image: const DecorationImage(
-                              //   image: AssetImage(
-                              //     'images/atom.png',
-                              //   ),
-                              // ),
-                              borderRadius: BorderRadius.circular(15),
-                              border: Border.all(
-                                  color: _selectedCategorys[index]
-                                      ? Colors.blue
-                                      : Colors.black,
-                                  width: 3.5),
-                            ),
-                            child: Icon(
-                              size: 50,
-                              iconList[index],
-                              color: _selectedCategorys[index]
-                                  ? Colors.blue
-                                  : Colors.black,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          categoryItem[index],
-                          style: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ],
+      body: Column(
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.05,
+            child: Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: const [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
+                    child: Text(
+                      'Categories',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontFamily: "Megrim",
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
-                  );
-                }),
+                  ),
+                  // Text(
+                  //   'See All',
+                  //   style: TextStyle(
+                  //     fontFamily: "NanumSquare",
+                  //     fontWeight: FontWeight.w500,
+                  //   ),
+                  // ),
+                ],
               ),
-              const SizedBox(
-                height: 50,
-              ),
-              const SizedBox(
-                width: 350,
-                height: 50,
-              ),
-            ],
+            ),
           ),
-        ),
+          Container(
+            height: 1.0,
+            width: 400.0,
+            color: Colors.black12,
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.7,
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 7,
+                  vertical: 0,
+                ),
+                child: Column(
+                  children: [
+                    GridView.count(
+                      shrinkWrap: true,
+                      crossAxisCount: 2,
+                      children: List.generate(8, (index) {
+                        return Center(
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      onCategoryTap(index);
+                                      // _selectedCategorys[index] =
+                                      //     !_selectedCategorys[index];
+                                    });
+                                  },
+                                  child: Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.4,
+                                    height: 170,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: _selectedCategorys[index]
+                                            ? Colors.black
+                                            : Colors.blue,
+                                      ),
+                                      // color: FlutterFlowTheme.of(context).secondaryBackground,
+                                      boxShadow: const [
+                                        BoxShadow(
+                                          blurRadius: 3,
+                                          color: Colors.white,
+                                          blurStyle: BlurStyle.solid,
+                                          offset: Offset(0, 0),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(50),
+                                    ),
+                                    child: Padding(
+                                      padding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              15, 10, 15, 10),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(30),
+                                            child: Image.network(
+                                              imageList[index],
+                                              width: double.infinity,
+                                              height: 115,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(8, 12, 0, 0),
+                                            child: Text(
+                                              categoryItem[index],
+                                              style: TextStyle(
+                                                fontFamily: "NanumSquareRound",
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 18,
+                                                color: _selectedCategorys[index]
+                                                    ? Colors.black
+                                                    : Colors.blue,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      }),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Container(
+            height: 1.0,
+            width: 400.0,
+            color: Colors.black12,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.1,
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
