@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:haru/screens/initial_alarm_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/services.dart';
 
 var categoryItem = [
   '운동',
@@ -59,6 +60,26 @@ class InitialCategorySelect_02 extends StatefulWidget {
 
 class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
   //bool check = false;
+  Future<bool> onWillPop() {
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("Do you want to exit the app?"),
+        actions: <Widget>[
+          TextButton(
+            child: const Text("No"),
+            onPressed: () => Navigator.pop(context, false),
+          ),
+          TextButton(
+            onPressed: () => SystemNavigator.pop(),
+            //Navigator.pop(context, true),
+
+            child: const Text("Yes"),
+          )
+        ],
+      ),
+    ).then((value) => value ?? false);
+  }
 
   late SharedPreferences prefs;
 
@@ -99,133 +120,136 @@ class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
+    return WillPopScope(
+      onWillPop: onWillPop,
+      child: Scaffold(
         backgroundColor: Colors.white,
-        automaticallyImplyLeading: false,
-        title: const Text(
-          'Choose your interests!',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 30,
-            fontFamily: "Megrim",
-            fontWeight: FontWeight.w900,
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          automaticallyImplyLeading: false,
+          title: const Text(
+            'Choose your interests!',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 30,
+              fontFamily: "Megrim",
+              fontWeight: FontWeight.w900,
+            ),
           ),
+          actions: const [],
+          centerTitle: true,
+          elevation: 0,
         ),
-        actions: const [],
-        centerTitle: true,
-        elevation: 0,
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 7,
-            vertical: 30,
-          ),
-          child: Column(
-            children: [
-              GridView.count(
-                shrinkWrap: true,
-                crossAxisCount: 2,
-                children: List.generate(8, (index) {
-                  return Center(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              setState(() {
-                                onCategoryTap(index);
-                                // _selectedCategorys[index] =
-                                //     !_selectedCategorys[index];
-                              });
-                            },
-                            child: Container(
-                              width: MediaQuery.of(context).size.width * 0.4,
-                              height: 170,
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: _selectedCategorys[index]
-                                      ? Colors.black
-                                      : Colors.blue,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 7,
+              vertical: 30,
+            ),
+            child: Column(
+              children: [
+                GridView.count(
+                  shrinkWrap: true,
+                  crossAxisCount: 2,
+                  children: List.generate(8, (index) {
+                    return Center(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  onCategoryTap(index);
+                                  // _selectedCategorys[index] =
+                                  //     !_selectedCategorys[index];
+                                });
+                              },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.4,
+                                height: 170,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: _selectedCategorys[index]
+                                        ? Colors.black
+                                        : Colors.blue,
+                                  ),
+                                  // color: FlutterFlowTheme.of(context).secondaryBackground,
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      blurRadius: 3,
+                                      color: Colors.white,
+                                      blurStyle: BlurStyle.solid,
+                                      offset: Offset(0, 0),
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(50),
                                 ),
-                                // color: FlutterFlowTheme.of(context).secondaryBackground,
-                                boxShadow: const [
-                                  BoxShadow(
-                                    blurRadius: 3,
-                                    color: Colors.white,
-                                    blurStyle: BlurStyle.solid,
-                                    offset: Offset(0, 0),
-                                  )
-                                ],
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    15, 10, 15, 10),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(30),
-                                      child: Image.network(
-                                        imageList[index],
-                                        width: double.infinity,
-                                        height: 115,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              8, 12, 0, 0),
-                                      child: Text(
-                                        categoryItem[index],
-                                        style: TextStyle(
-                                          fontFamily: "NanumSquareRound",
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: 18,
-                                          color: _selectedCategorys[index]
-                                              ? Colors.black
-                                              : Colors.blue,
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      15, 10, 15, 10),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(30),
+                                        child: Image.network(
+                                          imageList[index],
+                                          width: double.infinity,
+                                          height: 115,
+                                          fit: BoxFit.cover,
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(8, 12, 0, 0),
+                                        child: Text(
+                                          categoryItem[index],
+                                          style: TextStyle(
+                                            fontFamily: "NanumSquareRound",
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 18,
+                                            color: _selectedCategorys[index]
+                                                ? Colors.black
+                                                : Colors.blue,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                }),
-              ),
-              const SizedBox(
-                height: 50,
-              ),
-              SizedBox(
-                width: 350,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const InitialAlarm()),
                     );
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.black),
-                  ),
-                  child: const Text('다음'),
+                  }),
                 ),
-              ),
-            ],
+                const SizedBox(
+                  height: 50,
+                ),
+                SizedBox(
+                  width: 350,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const InitialAlarm()),
+                      );
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.black),
+                    ),
+                    child: const Text('다음'),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
