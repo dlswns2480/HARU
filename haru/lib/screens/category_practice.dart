@@ -2,6 +2,7 @@
 // import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:haru/screens/initial_alarm_screen.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
 class CategoryScreenWidget extends StatefulWidget {
@@ -35,7 +36,23 @@ class _CategoryScreenWidgetState extends State<CategoryScreenWidget> {
 
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
+  final _appBar = AppBar(
+    // backgroundColor: const Color(0xFFACD2ED),
+    backgroundColor: Colors.white,
+    automaticallyImplyLeading: false,
+    title: const Text(
+      'Choose your interests!',
+      style: TextStyle(
+        color: Colors.black,
+        fontSize: 30,
+        fontFamily: "Megrim",
+        fontWeight: FontWeight.w900,
+      ),
+    ),
+    actions: const [],
+    centerTitle: true,
+    elevation: 0,
+  );
   @override
   void dispose() {
     _unfocusNode.dispose();
@@ -51,22 +68,7 @@ class _CategoryScreenWidgetState extends State<CategoryScreenWidget> {
         backgroundColor: Colors.white,
         key: scaffoldKey,
         // backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        appBar: AppBar(
-          // backgroundColor: const Color(0xFFACD2ED),
-          backgroundColor: Colors.white,
-          automaticallyImplyLeading: false,
-          title: const Text(
-            'Choose your interests!',
-            style: TextStyle(
-              color: Colors.black,
-              fontFamily: "NanumSquare",
-              fontWeight: FontWeight.w900,
-            ),
-          ),
-          actions: const [],
-          centerTitle: true,
-          elevation: 0,
-        ),
+        appBar: _appBar,
         body: Column(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -83,7 +85,7 @@ class _CategoryScreenWidgetState extends State<CategoryScreenWidget> {
                       'Categories',
                       style: TextStyle(
                         fontSize: 15,
-                        fontFamily: "NanumSquare",
+                        fontFamily: "Megrim",
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -106,84 +108,111 @@ class _CategoryScreenWidgetState extends State<CategoryScreenWidget> {
             const SizedBox(
               height: 10,
             ),
-            GestureDetector(
-              onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-              child: SingleChildScrollView(
+            SingleChildScrollView(
+              child: SizedBox(
+                height: 600,
                 child: Column(
                   children: [
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0, 12, 0, 44),
-                      child: Wrap(
-                        spacing: 8,
-                        runSpacing: 8,
-                        alignment: WrapAlignment.start,
-                        crossAxisAlignment: WrapCrossAlignment.start,
-                        direction: Axis.horizontal,
-                        runAlignment: WrapAlignment.start,
-                        verticalDirection: VerticalDirection.down,
-                        clipBehavior: Clip.none,
-                        children: const [
-                          CategoryCard(
-                            title: "명언",
-                            imagePath:
-                                'https://images.unsplash.com/photo-1584921466621-d3a283cd3744?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2148&q=80',
-                          ),
-                          CategoryCard(
-                            title: "과학",
-                            imagePath:
-                                "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2NpZW5jZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-                          ),
-                          CategoryCard(
-                            title: "천체",
-                            imagePath:
-                                "https://images.unsplash.com/photo-1454789548928-9efd52dc4031?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c3BhY2V8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
-                          ),
-                          CategoryCard(
-                            title: "IT",
-                            imagePath:
-                                'https://images.unsplash.com/photo-1573495804683-641191e042ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2369&q=80',
-                          ),
-                          CategoryCard(
-                            title: "경제",
-                            imagePath:
-                                'https://images.unsplash.com/photo-1604594849809-dfedbc827105?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80',
-                          ),
-                          CategoryCard(
-                            title: "영어",
-                            imagePath:
-                                'https://images.unsplash.com/photo-1539632346654-dd4c3cffad8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80',
-                          ),
-                          CategoryCard(
-                            title: "의료",
-                            imagePath:
-                                'https://images.unsplash.com/photo-1603807008857-ad66b70431aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2373&q=80',
-                          ),
-                        ],
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: const [
+                        CategoryCard(
+                          title: "명언",
+                          imagePath:
+                              'https://images.unsplash.com/photo-1584921466621-d3a283cd3744?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2148&q=80',
+                        ),
+                        CategoryCard(
+                          title: "과학",
+                          imagePath:
+                              "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2NpZW5jZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: const [
+                        CategoryCard(
+                          title: "천체",
+                          imagePath:
+                              "https://images.unsplash.com/photo-1454789548928-9efd52dc4031?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c3BhY2V8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
+                        ),
+                        CategoryCard(
+                          title: "IT",
+                          imagePath:
+                              'https://images.unsplash.com/photo-1573495804683-641191e042ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2369&q=80',
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: const [
+                        CategoryCard(
+                          title: "경제",
+                          imagePath:
+                              'https://images.unsplash.com/photo-1604594849809-dfedbc827105?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80',
+                        ),
+                        CategoryCard(
+                          title: "영어",
+                          imagePath:
+                              'https://images.unsplash.com/photo-1539632346654-dd4c3cffad8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80',
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: const [
+                        CategoryCard(
+                          title: "의료",
+                          imagePath:
+                              'https://images.unsplash.com/photo-1603807008857-ad66b70431aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2373&q=80',
+                        ),
+                        CategoryCard(
+                          title: "영어",
+                          imagePath:
+                              'https://images.unsplash.com/photo-1539632346654-dd4c3cffad8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80',
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ),
             ),
-            // SizedBox(
-            //   width: 100,
-            //   height: 50,
-            //   child: ElevatedButton(
-            //     onPressed: () {
-            //       Navigator.push(
-            //         context,
-            //         MaterialPageRoute(
-            //             builder: (context) => const InitialAlarm()),
-            //       );
-            //     },
-            //     style: ButtonStyle(
-            //       alignment: Alignment.bottomRight,
-            //       backgroundColor: MaterialStateProperty.all(Colors.black),
-            //     ),
-            //     child: const Text('다음'),
-            //   ),
-            // ),
+            const SizedBox(
+              height: 10,
+            ),
+            SizedBox(
+              width: 100,
+              height: 50,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const InitialAlarm()),
+                  );
+                },
+                style: ButtonStyle(
+                  alignment: Alignment.center,
+                  backgroundColor: MaterialStateProperty.all(Colors.black),
+                ),
+                child: const Text(
+                  'NEXT',
+                  style: TextStyle(
+                    fontFamily: "Megrim",
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
         // SizedBox(
