@@ -150,13 +150,9 @@ class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
               ),
             ),
           ),
-          Container(
-            height: 1.0,
-            width: 400.0,
-            color: Colors.black12,
-          ),
+          const Line(),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.7,
+            height: MediaQuery.of(context).size.height * 0.65,
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 7,
@@ -164,8 +160,11 @@ class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
               ),
               child: Column(
                 children: [
+                  const SizedBox(
+                    height: 10,
+                  ),
                   SizedBox(
-                    height: screenHeight * 0.7,
+                    height: MediaQuery.of(context).size.height * 0.6,
                     child: SingleChildScrollView(
                       child: GridView.count(
                         physics: const ScrollPhysics(),
@@ -227,7 +226,7 @@ class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
                                           ),
                                           Padding(
                                             padding: const EdgeInsetsDirectional
-                                                .fromSTEB(8, 12, 0, 0),
+                                                .fromSTEB(8, 4, 0, 0),
                                             child: Text(
                                               categoryItem[index],
                                               style: TextStyle(
@@ -256,14 +255,7 @@ class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
               ),
             ),
           ),
-          Container(
-            height: 1.0,
-            width: 400.0,
-            color: Colors.black12,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
+          const Line(),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.1,
             child: Padding(
@@ -302,6 +294,21 @@ class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class Line extends StatelessWidget {
+  const Line({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 1.0,
+      width: MediaQuery.of(context).size.width * 0.9,
+      color: Colors.black12,
     );
   }
 }
