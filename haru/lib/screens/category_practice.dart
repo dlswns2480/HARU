@@ -108,9 +108,9 @@ class _CategoryScreenWidgetState extends State<CategoryScreenWidget> {
             const SizedBox(
               height: 10,
             ),
-            SingleChildScrollView(
-              child: SizedBox(
-                height: 600,
+            SizedBox(
+              height: 600,
+              child: SingleChildScrollView(
                 child: Column(
                   children: [
                     Row(
