@@ -99,6 +99,7 @@ class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -156,20 +157,22 @@ class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.7,
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 7,
-                  vertical: 0,
-                ),
-                child: Column(
-                  children: [
-                    GridView.count(
-                      shrinkWrap: true,
-                      crossAxisCount: 2,
-                      children: List.generate(8, (index) {
-                        return Center(
-                          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 7,
+                vertical: 0,
+              ),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: screenHeight * 0.7,
+                    child: SingleChildScrollView(
+                      child: GridView.count(
+                        physics: const ScrollPhysics(),
+                        shrinkWrap: true,
+                        crossAxisCount: 2,
+                        children: List.generate(8, (index) {
+                          return Center(
                             child: Column(
                               children: [
                                 InkWell(
@@ -244,12 +247,12 @@ class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
                                 ),
                               ],
                             ),
-                          ),
-                        );
-                      }),
+                          );
+                        }),
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
