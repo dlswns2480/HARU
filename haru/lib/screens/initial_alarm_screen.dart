@@ -121,12 +121,15 @@ class _InitialAlarm extends State<InitialAlarm> {
                       separatorBuilder: (BuildContext context, int index) =>
                           const Divider(
                         height: 20,
-                        thickness: 1,
+                        thickness: 2,
                       ),
                     ),
-                    const Divider(
+                    // const Divider(
+                    //   height: 20,
+                    //   thickness: 2,
+                    // ),
+                    const SizedBox(
                       height: 20,
-                      thickness: 1,
                     ),
                     buildAddBtn(),
                   ],
@@ -231,13 +234,13 @@ class _InitialAlarm extends State<InitialAlarm> {
     } else {
       return Container(
         height: 70,
-        width: 320,
+        width: 350,
         decoration: BoxDecoration(
           border: Border.all(
             color: Colors.grey,
           ),
           color: Colors.white,
-          borderRadius: BorderRadius.circular(27),
+          borderRadius: BorderRadius.circular(22),
         ),
         child: GestureDetector(
           child: FloatingActionButton(
