@@ -19,7 +19,7 @@ class _HomeTestState extends State<HomeTest> {
         imagePath:
             "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80",
         knowledge:
-            "그레이 캐피털리즘(Gray Capitalism)이란 정부 통제력이 강한 기존 중국식 자본주의에서 통제를 풀고 시장을 확대하는 과정에 있는 중간적 형태의 자본주 의를 뜻한다.",
+            " 그레이 캐피털리즘(Gray Capitalism)이란 정부 통제력이 강한 기존 중국식 자본주의에서 통제를 풀고 시장을 확대하는 과정에 있는 중간적 형태의 자본주 의를 뜻한다.",
         author: "null",
       ),
     );
@@ -134,11 +134,25 @@ class HomeKnowledgeWidget extends StatelessWidget {
                                       ),
                                     ),
                                     const SizedBox(
-                                      height: 100,
+                                      height: 80,
+                                    ),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.9,
+                                      height: 2,
+                                      decoration: const BoxDecoration(
+                                        color: Color(0x34FFFFFF),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
                                     ),
                                     SizedBox(
-                                      width: 400,
-                                      height: 300,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.9,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.3,
                                       child: SingleChildScrollView(
                                         scrollDirection: Axis.vertical,
                                         child: Row(
