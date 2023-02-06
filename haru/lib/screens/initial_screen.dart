@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-
-import 'category_practice.dart';
+import 'package:haru/screens/initial_category_screen.dart';
 
 class InitialScreen extends StatefulWidget {
   const InitialScreen({super.key});
@@ -18,7 +17,7 @@ class _InitialScreenState extends State<InitialScreen> {
       Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => const CategoryScreenWidget()));
+              builder: (context) => const InitialCategorySelect_02()));
     });
   }
 
