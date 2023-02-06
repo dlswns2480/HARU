@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:haru/screens/home_screen.dart';
 import 'package:intl/intl.dart';
 
 final List<String> data = <String>[];
@@ -30,89 +29,114 @@ class _InitialAlarm extends State<InitialAlarm> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 3,
+    double screenHeight = MediaQuery.of(context).size.height;
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
         backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        title: const Text(
-          "알림 설정",
-          style: TextStyle(
-            fontSize: 24,
-            fontFamily: "NanumSquare",
-            // fontWeight: FontWeight.w600,
+        appBar: AppBar(
+          elevation: 3,
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+          title: const Text(
+            "알림 설정",
+            style: TextStyle(
+              fontSize: 24,
+              fontFamily: "NanumSquare",
+              // fontWeight: FontWeight.w600,
+            ),
           ),
         ),
-      ),
-      body: Column(
-        children: [
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 7,
-                vertical: 80,
+        body: Column(
+          children: [
+            SizedBox(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 7,
+                  vertical: 80,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    buildAddBtn(),
+                    const SizedBox(
+                      height: 50,
+                    ),
+                    SizedBox(
+                      height: screenHeight * 0.4,
+                      child: SingleChildScrollView(
+                        child: ListView.separated(
+                          shrinkWrap: true,
+                          padding: const EdgeInsets.all(10),
+                          itemCount: data.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return ListTile(
+                              key: ValueKey(data[index]),
+                              title: Text(
+                                data[index],
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  fontSize: 40,
+                                  fontFamily: "NanumSquareRound",
+                                ),
+                              ),
+                              trailing: IconButton(
+                                icon: const Icon(
+                                  Icons.close,
+                                  // Icons.remove_circle_outline_rounded,
+                                  color: Colors.red,
+                                  size: 30,
+                                ),
+                                onPressed: () => onDelete(context, index),
+                              ),
+                            );
+                          },
+                          separatorBuilder: (BuildContext context, int index) =>
+                              const Divider(
+                            height: 20,
+                            thickness: 2,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  buildAddBtn(),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  ListView.separated(
-                    shrinkWrap: true,
-                    padding: const EdgeInsets.all(10),
-                    itemCount: data.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return ListTile(
-                        key: ValueKey(data[index]),
-                        title: Text(
-                          data[index],
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 40,
-                            fontFamily: "NanumSquareRound",
-                          ),
-                        ),
-                        trailing: IconButton(
-                          icon: const Icon(
-                            Icons.close,
-                            // Icons.remove_circle_outline_rounded,
-                            color: Colors.red,
-                            size: 30,
-                          ),
-                          onPressed: () => onDelete(context, index),
-                        ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                SizedBox(
+                  width: 100,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const InitialAlarm()),
                       );
                     },
-                    separatorBuilder: (BuildContext context, int index) =>
-                        const Divider(
-                      height: 20,
-                      thickness: 2,
+                    style: ButtonStyle(
+                      alignment: Alignment.center,
+                      backgroundColor: MaterialStateProperty.all(Colors.black),
+                    ),
+                    child: const Text(
+                      'NEXT',
+                      style: TextStyle(
+                        fontFamily: "Megrim",
+                        fontWeight: FontWeight.w900,
+                      ),
                     ),
                   ),
-                ],
-              ),
+                ),
+                const SizedBox(
+                  width: 30,
+                ),
+              ],
             ),
-          ),
-          SizedBox(
-            width: 360,
-            height: 50,
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()),
-                );
-              },
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.black),
-              ),
-              child: const Text('다음'),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
