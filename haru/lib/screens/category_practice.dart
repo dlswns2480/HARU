@@ -75,31 +75,34 @@ class _CategoryScreenWidgetState extends State<CategoryScreenWidget> {
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: const [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
-                    child: Text(
-                      'Categories',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontFamily: "Megrim",
-                        fontWeight: FontWeight.w500,
+            SizedBox(
+              height: screenHeight * 0.05,
+              child: Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: const [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
+                      child: Text(
+                        'Categories',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontFamily: "Megrim",
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
-                  ),
-                  // Text(
-                  //   'See All',
-                  //   style: TextStyle(
-                  //     fontFamily: "NanumSquare",
-                  //     fontWeight: FontWeight.w500,
-                  //   ),
-                  // ),
-                ],
+                    // Text(
+                    //   'See All',
+                    //   style: TextStyle(
+                    //     fontFamily: "NanumSquare",
+                    //     fontWeight: FontWeight.w500,
+                    //   ),
+                    // ),
+                  ],
+                ),
               ),
             ),
             Container(
@@ -111,7 +114,7 @@ class _CategoryScreenWidgetState extends State<CategoryScreenWidget> {
             //   height: 10,
             // ),
             SizedBox(
-              height: screenHeight * 0.7,
+              height: screenHeight * 0.65,
               child: SingleChildScrollView(
                 child: Column(
                   children: [
@@ -199,37 +202,40 @@ class _CategoryScreenWidgetState extends State<CategoryScreenWidget> {
             const SizedBox(
               height: 10,
             ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  SizedBox(
-                    width: 100,
-                    height: 50,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const InitialAlarm()),
-                        );
-                      },
-                      style: ButtonStyle(
-                        alignment: Alignment.center,
-                        backgroundColor:
-                            MaterialStateProperty.all(Colors.black),
-                      ),
-                      child: const Text(
-                        '다음',
-                        style: TextStyle(
-                          fontFamily: "Megrim",
-                          fontWeight: FontWeight.w900,
+            SizedBox(
+              height: screenHeight * 0.1,
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    SizedBox(
+                      width: 100,
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const InitialAlarm()),
+                          );
+                        },
+                        style: ButtonStyle(
+                          alignment: Alignment.center,
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.black),
+                        ),
+                        child: const Text(
+                          '다음',
+                          style: TextStyle(
+                            fontFamily: "Megrim",
+                            fontWeight: FontWeight.w900,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],
@@ -272,53 +278,55 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width * 0.4,
-      height: 170,
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.black12,
+    return GestureDetector(
+      child: Container(
+        width: MediaQuery.of(context).size.width * 0.4,
+        height: 170,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.black12,
+          ),
+          // color: FlutterFlowTheme.of(context).secondaryBackground,
+          boxShadow: const [
+            BoxShadow(
+              blurRadius: 3,
+              color: Colors.white,
+              blurStyle: BlurStyle.solid,
+              offset: Offset(0, 0),
+            )
+          ],
+          borderRadius: BorderRadius.circular(50),
         ),
-        // color: FlutterFlowTheme.of(context).secondaryBackground,
-        boxShadow: const [
-          BoxShadow(
-            blurRadius: 3,
-            color: Colors.white,
-            blurStyle: BlurStyle.solid,
-            offset: Offset(0, 0),
-          )
-        ],
-        borderRadius: BorderRadius.circular(50),
-      ),
-      child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(15, 10, 15, 10),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(30),
-              child: Image.network(
-                imagePath,
-                width: double.infinity,
-                height: 115,
-                fit: BoxFit.cover,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(8, 12, 0, 0),
-              child: Text(
-                title,
-                style: const TextStyle(
-                  fontFamily: "NanumSquareRound",
-                  fontWeight: FontWeight.w700,
-                  fontSize: 18,
-                  color: Colors.black,
+        child: Padding(
+          padding: const EdgeInsetsDirectional.fromSTEB(15, 10, 15, 10),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(30),
+                child: Image.network(
+                  imagePath,
+                  width: double.infinity,
+                  height: 115,
+                  fit: BoxFit.cover,
                 ),
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(8, 12, 0, 0),
+                child: Text(
+                  title,
+                  style: const TextStyle(
+                    fontFamily: "NanumSquareRound",
+                    fontWeight: FontWeight.w700,
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

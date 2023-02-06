@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:haru/screens/category_practice.dart';
-import 'package:haru/screens/home_test%202.dart';
+import 'package:haru/screens/home_screen.dart';
 import 'package:intl/intl.dart';
 
 final List<String> data = <String>[];
@@ -149,7 +149,7 @@ class _InitialAlarm extends State<InitialAlarm> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const HomeTest()),
+                              builder: (context) => const HomeScreen()),
                         );
                       },
                       style: ButtonStyle(
