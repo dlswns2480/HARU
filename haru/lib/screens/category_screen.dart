@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:haru/screens/initial_category_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 var categoryItem = [
@@ -48,7 +49,7 @@ var categoryimage = [
   'assets/images/atom.png',
 ];
 
-class CategorySelect extends StatefulWidget {
+class CategorySelect extends InitialCategorySelect_02 {
   const CategorySelect({super.key});
 
   @override
@@ -185,8 +186,8 @@ class _CategorySelectState extends State<CategorySelect> {
                                     decoration: BoxDecoration(
                                       border: Border.all(
                                         color: _selectedCategorys[index]
-                                            ? Colors.black
-                                            : Colors.blue,
+                                            ? Colors.blue
+                                            : Colors.black,
                                       ),
                                       // color: FlutterFlowTheme.of(context).secondaryBackground,
                                       boxShadow: const [
@@ -230,8 +231,8 @@ class _CategorySelectState extends State<CategorySelect> {
                                                 fontWeight: FontWeight.w700,
                                                 fontSize: 18,
                                                 color: _selectedCategorys[index]
-                                                    ? Colors.black
-                                                    : Colors.blue,
+                                                    ? Colors.blue
+                                                    : Colors.black,
                                               ),
                                             ),
                                           ),

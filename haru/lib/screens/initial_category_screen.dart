@@ -187,8 +187,8 @@ class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
                                     decoration: BoxDecoration(
                                       border: Border.all(
                                         color: _selectedCategorys[index]
-                                            ? Colors.black
-                                            : Colors.blue,
+                                            ? Colors.blue
+                                            : Colors.black,
                                       ),
                                       // color: FlutterFlowTheme.of(context).secondaryBackground,
                                       boxShadow: const [
@@ -232,8 +232,8 @@ class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
                                                 fontWeight: FontWeight.w700,
                                                 fontSize: 18,
                                                 color: _selectedCategorys[index]
-                                                    ? Colors.black
-                                                    : Colors.blue,
+                                                    ? Colors.blue
+                                                    : Colors.black,
                                               ),
                                             ),
                                           ),
