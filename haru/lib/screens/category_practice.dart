@@ -189,31 +189,39 @@ class _CategoryScreenWidgetState extends State<CategoryScreenWidget> {
               ),
             ),
             const SizedBox(
-              height: 10,
+              height: 20,
             ),
-            SizedBox(
-              width: 100,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const InitialAlarm()),
-                  );
-                },
-                style: ButtonStyle(
-                  alignment: Alignment.center,
-                  backgroundColor: MaterialStateProperty.all(Colors.black),
-                ),
-                child: const Text(
-                  'NEXT',
-                  style: TextStyle(
-                    fontFamily: "Megrim",
-                    fontWeight: FontWeight.w900,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                SizedBox(
+                  width: 100,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const InitialAlarm()),
+                      );
+                    },
+                    style: ButtonStyle(
+                      alignment: Alignment.center,
+                      backgroundColor: MaterialStateProperty.all(Colors.black),
+                    ),
+                    child: const Text(
+                      'NEXT',
+                      style: TextStyle(
+                        fontFamily: "Megrim",
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                const SizedBox(
+                  width: 30,
+                ),
+              ],
             ),
           ],
         ),
