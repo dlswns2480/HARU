@@ -3,14 +3,14 @@ import 'package:haru/screens/initial_alarm_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 var categoryItem = [
-  '운동',
-  '의료',
-  '건강',
   '명언',
   '과학',
+  '천체',
   'IT',
   '경제',
   '영어',
+  '의료',
+  '생활',
 ];
 final List<String> imageList = <String>[
   'https://images.unsplash.com/photo-1584921466621-d3a283cd3744?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2148&q=80',
@@ -165,10 +165,13 @@ class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
                 child: Column(
                   children: [
                     GridView.count(
+                      scrollDirection: Axis.vertical,
+                      physics: const ScrollPhysics(),
                       shrinkWrap: true,
                       crossAxisCount: 2,
                       children: List.generate(8, (index) {
                         return Center(
+<<<<<<< HEAD
                           child: SingleChildScrollView(
                             child: Column(
                               children: [
@@ -200,28 +203,75 @@ class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
                                         )
                                       ],
                                       borderRadius: BorderRadius.circular(50),
+=======
+                          child: Column(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    onCategoryTap(index);
+                                    // _selectedCategorys[index] =
+                                    //     !_selectedCategorys[index];
+                                  });
+                                },
+                                child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.4,
+                                  height: 170,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: _selectedCategorys[index]
+                                          ? Colors.black
+                                          : Colors.blue,
+>>>>>>> 2b648939862af2dd8ed1906dcf3a87a4f06db35a
                                     ),
-                                    child: Padding(
-                                      padding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              15, 10, 15, 10),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(30),
-                                            child: Image.network(
-                                              imageList[index],
-                                              width: double.infinity,
-                                              height: 115,
-                                              fit: BoxFit.cover,
+                                    // color: FlutterFlowTheme.of(context).secondaryBackground,
+                                    boxShadow: const [
+                                      BoxShadow(
+                                        blurRadius: 3,
+                                        color: Colors.white,
+                                        blurStyle: BlurStyle.solid,
+                                        offset: Offset(0, 0),
+                                      )
+                                    ],
+                                    borderRadius: BorderRadius.circular(50),
+                                  ),
+                                  child: Padding(
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            15, 10, 15, 10),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                          child: Image.network(
+                                            imageList[index],
+                                            width: double.infinity,
+                                            height: 115,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(8, 12, 0, 0),
+                                          child: Text(
+                                            categoryItem[index],
+                                            style: TextStyle(
+                                              fontFamily: "NanumSquareRound",
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 18,
+                                              color: _selectedCategorys[index]
+                                                  ? Colors.black
+                                                  : Colors.blue,
                                             ),
                                           ),
+<<<<<<< HEAD
                                           Padding(
                                             padding: const EdgeInsetsDirectional
                                                 .fromSTEB(8, 12, 0, 0),
@@ -239,11 +289,15 @@ class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
                                           ),
                                         ],
                                       ),
+=======
+                                        ),
+                                      ],
+>>>>>>> 2b648939862af2dd8ed1906dcf3a87a4f06db35a
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         );
                       }),
