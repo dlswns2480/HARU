@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:haru/screens/category_screen.dart';
 import 'package:haru/screens/home_test.dart';
-import 'package:haru/screens/initial_alarm_screen.dart';
+import 'alarm_screen.dart';
 // int screenIndex = 0;
 // List<Widget> _children = [
 //   const Text('카테고리'),
@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     const HomeTest(),
     const CategorySelect(),
-    const InitialAlarm(),
+    const Alarm(),
   ];
 
   @override
