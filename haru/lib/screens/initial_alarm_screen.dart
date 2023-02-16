@@ -3,15 +3,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:haru/screens/home_screen.dart';
 import 'package:haru/screens/initial_category_screen.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final List<String> data = <String>[];
 
-class InitialAlarm extends StatefulWidget {
-  const InitialAlarm({Key? key}) : super(key: key);
-
-  @override
-  _InitialAlarm createState() => _InitialAlarm();
-}
+final List<bool> setTime = <bool>[
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+];
 
 final _appBar = AppBar(
   // backgroundColor: const Color(0xFFACD2ED),
@@ -31,21 +35,65 @@ final _appBar = AppBar(
   elevation: 0,
 );
 
+class InitialAlarm extends StatefulWidget {
+  const InitialAlarm({super.key});
+
+  @override
+  State<InitialAlarm> createState() => _InitialAlarm();
+}
+
 class _InitialAlarm extends State<InitialAlarm> {
   // int counter = 5;
+
+  late SharedPreferences prefs;
+
+  // final settingTimes = prefs.getStringList('settingTimes') ?? [];
 
   final globalKey = GlobalKey<AnimatedListState>();
   DateTime? tempPickedDate;
   DateTime _selectedDate = DateTime.now();
   final TextEditingController alarmController =
       TextEditingController(text: '-');
+
+  Future initprefs() async {
+    prefs = await SharedPreferences.getInstance();
+    final settingTimes = prefs.getStringList('settingTimes') ?? [];
+    // print(settingTimes);
+    if (settingTimes.isNotEmpty) {
+      data.clear();
+      for (int i = 0; i < settingTimes.length; i++) {
+        setState(() {
+          data.add(settingTimes[i]);
+        });
+      }
+      await prefs.setStringList('settingTimes', settingTimes);
+    } else {
+      await prefs.setStringList('settingTimes', []);
+    }
+  }
+
   @override
   void initState() {
     // for (var i = 0; i < counter; i++) {
     //   data.add('${i + 1}');
     // }
     super.initState();
+    initprefs();
   }
+
+  // addSettingTime(int index) async {
+  //   final settingTime = prefs.getStringList('settingTime') ?? [];
+  //   if (setTime[index]) {
+  //     settingTime.remove(data[index]);
+  //   } else {
+  //     settingTime.add(data[index]);
+  //   }
+  //   await prefs.setStringList('settingTime', settingTime);
+  //   setState(() {
+  //     final settingTime = prefs.getStringList('settingTimes') ?? [];
+  //     setTime[index] = !setTime[index];
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -220,7 +268,7 @@ class _InitialAlarm extends State<InitialAlarm> {
   }
 
   Widget buildAddBtn() {
-    if (data.length == 5) {
+    if (data.length >= 5) {
       return AlertDialog(
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
@@ -252,6 +300,7 @@ class _InitialAlarm extends State<InitialAlarm> {
               size: 30,
             ),
             onPressed: () {
+              // addSettingTime(index);
               _selectDate();
               // data.add('${++counter}');
               // globalKey.currentState!.insertItem(data.length - 1);
@@ -262,42 +311,51 @@ class _InitialAlarm extends State<InitialAlarm> {
     }
   }
 
-  void onDelete(context, index) {
+  Future<void> onDelete(context, index) async {
+    final settingTimes = prefs.getStringList('settingTimes') ?? [];
+
     setState(() {
       data.removeAt(index);
     });
+    settingTimes.removeAt(index);
+    await prefs.setStringList('settingTimes', settingTimes);
   }
 
   _selectDate() async {
+    final settingTimes = prefs.getStringList('settingTimes') ?? [];
+
     DateTime? pickedDate = await showModalBottomSheet<DateTime>(
       backgroundColor: ThemeData.light().scaffoldBackgroundColor,
       context: context,
+      // index : index,
       builder: (context) {
         // DateTime tempPickedDate;
         return SizedBox(
           height: 300,
           child: Column(
             children: <Widget>[
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    CupertinoButton(
-                      child: const Text('취소'),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                        FocusScope.of(context).unfocus();
-                      },
-                    ),
-                    CupertinoButton(
-                      child: const Text('완료'),
-                      onPressed: () {
-                        Navigator.of(context).pop(tempPickedDate);
-                        FocusScope.of(context).unfocus();
-                      },
-                    ),
-                  ],
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  CupertinoButton(
+                    child: const Text('취소'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      FocusScope.of(context).unfocus();
+                      // settingTimes.()remove()
+                    },
+                  ),
+                  CupertinoButton(
+                    child: const Text('완료'),
+                    onPressed: () async {
+                      Navigator.of(context).pop(tempPickedDate);
+                      FocusScope.of(context).unfocus();
+                      // settingTimes.add(tempPickedDate.toString());
+                      // await prefs.setStringList('settingTimes', settingTimes);
+                      // setState(() => setTime[0] = !setTime[0]);
+                    },
+                  ),
+                ],
               ),
               const Divider(
                 height: 0,
@@ -321,11 +379,16 @@ class _InitialAlarm extends State<InitialAlarm> {
       },
     );
     if (pickedDate != null) {
+      final settingTimes = prefs.getStringList('settingTimes') ?? [];
+
       setState(() {
         _selectedDate = pickedDate;
         alarmController.text = pickedDate.toString();
         data.add(convertDateTimeDisplay(alarmController.text));
+        // settingTimes.add(data[0]);
       });
+      settingTimes.add(data[data.length - 1]);
+      await prefs.setStringList('settingTimes', settingTimes);
     }
   }
 

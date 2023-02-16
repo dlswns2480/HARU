@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:haru/screens/initial_alarm_screen.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final List<String> data = <String>[];
-
-class Alarm extends StatefulWidget {
-  const Alarm({Key? key}) : super(key: key);
-
-  @override
-  _Alarm createState() => _Alarm();
-}
 
 final _appBar = AppBar(
   // backgroundColor: const Color(0xFFACD2ED),
@@ -29,20 +24,65 @@ final _appBar = AppBar(
   elevation: 0,
 );
 
+class Alarm extends InitialAlarm {
+  const Alarm({super.key});
+
+  @override
+  State<Alarm> createState() => _Alarm();
+}
+
+// final _appBar = AppBar(
+//   // backgroundColor: const Color(0xFFACD2ED),
+//   backgroundColor: Colors.white,
+//   automaticallyImplyLeading: false,
+//   title: const Text(
+//     'Setting Alarm!',
+//     style: TextStyle(
+//       color: Colors.black,
+//       fontSize: 30,
+//       fontFamily: "Megrim",
+//       fontWeight: FontWeight.w900,
+//     ),
+//   ),
+//   actions: const [],
+//   centerTitle: true,
+//   elevation: 0,
+// );
+
 class _Alarm extends State<Alarm> {
   // int counter = 5;
+
+  late SharedPreferences prefs;
 
   final globalKey = GlobalKey<AnimatedListState>();
   DateTime? tempPickedDate;
   DateTime _selectedDate = DateTime.now();
   final TextEditingController alarmController =
       TextEditingController(text: '-');
+
+  Future initprefs() async {
+    prefs = await SharedPreferences.getInstance();
+    final settingTimes = prefs.getStringList('settingTimes') ?? [];
+    if (settingTimes.isNotEmpty) {
+      data.clear();
+      for (int i = 0; i < settingTimes.length; i++) {
+        setState(() {
+          data.add(settingTimes[i]);
+        });
+      }
+      await prefs.setStringList('settingTimes', settingTimes);
+    } else {
+      await prefs.setStringList('settingTimes', []);
+    }
+  }
+
   @override
   void initState() {
     // for (var i = 0; i < counter; i++) {
     //   data.add('${i + 1}');
     // }
     super.initState();
+    initprefs();
   }
 
   @override
@@ -149,7 +189,7 @@ class _Alarm extends State<Alarm> {
   }
 
   Widget buildAddBtn() {
-    if (data.length == 5) {
+    if (data.length >= 5) {
       return AlertDialog(
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
@@ -191,10 +231,13 @@ class _Alarm extends State<Alarm> {
     }
   }
 
-  void onDelete(context, index) {
+  Future<void> onDelete(context, index) async {
+    final settingTimes = prefs.getStringList('settingTimes') ?? [];
     setState(() {
       data.removeAt(index);
     });
+    settingTimes.removeAt(index);
+    await prefs.setStringList('settingTimes', settingTimes);
   }
 
   _selectDate() async {
@@ -250,11 +293,14 @@ class _Alarm extends State<Alarm> {
       },
     );
     if (pickedDate != null) {
+      final settingTimes = prefs.getStringList('settingTimes') ?? [];
       setState(() {
         _selectedDate = pickedDate;
         alarmController.text = pickedDate.toString();
         data.add(convertDateTimeDisplay(alarmController.text));
       });
+      settingTimes.add(data[data.length - 1]);
+      await prefs.setStringList('settingTimes', settingTimes);
     }
   }
 
