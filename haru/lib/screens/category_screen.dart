@@ -155,20 +155,25 @@ class _CategorySelectState extends State<CategorySelect> {
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.7,
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 7,
-                  vertical: 0,
-                ),
-                child: Column(
-                  children: [
-                    GridView.count(
-                      shrinkWrap: true,
-                      crossAxisCount: 2,
-                      children: List.generate(8, (index) {
-                        return Center(
-                          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 7,
+                vertical: 0,
+              ),
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.66,
+                    child: SingleChildScrollView(
+                      child: GridView.count(
+                        physics: const ScrollPhysics(),
+                        shrinkWrap: true,
+                        crossAxisCount: 2,
+                        children: List.generate(8, (index) {
+                          return Center(
                             child: Column(
                               children: [
                                 InkWell(
@@ -223,7 +228,7 @@ class _CategorySelectState extends State<CategorySelect> {
                                           ),
                                           Padding(
                                             padding: const EdgeInsetsDirectional
-                                                .fromSTEB(8, 12, 0, 0),
+                                                .fromSTEB(8, 4, 0, 0),
                                             child: Text(
                                               categoryItem[index],
                                               style: TextStyle(
@@ -243,29 +248,12 @@ class _CategorySelectState extends State<CategorySelect> {
                                 ),
                               ],
                             ),
-                          ),
-                        );
-                      }),
+                          );
+                        }),
+                      ),
                     ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Container(
-            height: 1.0,
-            width: 400.0,
-            color: Colors.black12,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.1,
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                  ),
+                ],
               ),
             ),
           ),
