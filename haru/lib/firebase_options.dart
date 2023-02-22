@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -49,6 +43,15 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyADTt2R8e4DjJcqMWlNgWhfT2zctn0GSCw',
+    appId: '1:78315821008:web:ec76e59101fc5fb0900bd5',
+    messagingSenderId: '78315821008',
+    projectId: 'haru-ssu',
+    authDomain: 'haru-ssu.firebaseapp.com',
+    storageBucket: 'haru-ssu.appspot.com',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDRzK7JvQPrOIcIJ96-9K4_YFaCPblMGz4',
     appId: '1:78315821008:android:a666b1d83d51c2e8900bd5',
@@ -58,6 +61,16 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyDU_bsMobG2QFpO7716OrvvJxRuXajsyEc',
+    appId: '1:78315821008:ios:44348af5e3250bb4900bd5',
+    messagingSenderId: '78315821008',
+    projectId: 'haru-ssu',
+    storageBucket: 'haru-ssu.appspot.com',
+    iosClientId: '78315821008-b6kueudcn4uhu113mohou0eislsfejih.apps.googleusercontent.com',
+    iosBundleId: 'com.example.haru',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyDU_bsMobG2QFpO7716OrvvJxRuXajsyEc',
     appId: '1:78315821008:ios:44348af5e3250bb4900bd5',
     messagingSenderId: '78315821008',

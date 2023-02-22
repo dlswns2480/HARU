@@ -29,6 +29,13 @@
             {
               "client_id": "78315821008-ki116jqfm290s7h31a31srgln9tb23k4.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "78315821008-b6kueudcn4uhu113mohou0eislsfejih.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.haru"
+              }
             }
           ]
         }

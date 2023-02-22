@@ -29,7 +29,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  firebase_core: ^2.5.0
+  firebase_core: ^2.6.1
   http: ^0.12.0
   flutter:
 
@@ -50,6 +50,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   shared_preferences: ^2.0.17
   cloud_firestore: ^4.4.0
+  firebase_messaging: ^14.2.4
+  flutter_local_notifications: ^8.2.0
+  logger: ^1.1.0
+  get: ^4.6.5
 
 dev_dependencies:
   flutter_test:
