@@ -31,7 +31,7 @@ tz.TZDateTime _setNotiTime() {
 
   final now = tz.TZDateTime.now(tz.local);
   var scheduledDate =
-      tz.TZDateTime(tz.local, now.year, now.month, now.day, 20, 08);
+      tz.TZDateTime(tz.local, now.year, now.month, now.day, 20, 35);
   print("==================");
   print("Wow!!!!!!!!!!!!!!!!!!");
 
