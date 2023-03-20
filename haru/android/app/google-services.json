@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "78315821008",
+    "project_id": "haru-ssu",
+    "storage_bucket": "haru-ssu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78315821008:android:a666b1d83d51c2e8900bd5",
+        "android_client_info": {
+          "package_name": "com.example.haru"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "78315821008-ki116jqfm290s7h31a31srgln9tb23k4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRzK7JvQPrOIcIJ96-9K4_YFaCPblMGz4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "78315821008-ki116jqfm290s7h31a31srgln9tb23k4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "78315821008-b6kueudcn4uhu113mohou0eislsfejih.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.haru"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

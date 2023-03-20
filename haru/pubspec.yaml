@@ -39,8 +39,9 @@ dependencies:
   fluttertoast: ^8.1.2
   intl: ^0.18.0
 
-  
-
+  # 알림 관련 plugin
+  flutter_local_notifications: ^13.0.0
+  timezone: ^0.9.1
   #shared_preferences: "<newest version>"
   
 
