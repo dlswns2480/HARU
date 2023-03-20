@@ -35,31 +35,34 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _children[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.brown,
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _selectedIndex,
-        onTap: (int index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_rounded),
-            label: "home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.category_rounded),
-            label: "category",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.alarm_rounded),
-            label: "alarm",
-          ),
-        ],
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        body: _children[_selectedIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Colors.brown,
+          type: BottomNavigationBarType.fixed,
+          currentIndex: _selectedIndex,
+          onTap: (int index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_rounded),
+              label: "home",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.category_rounded),
+              label: "category",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.alarm_rounded),
+              label: "alarm",
+            ),
+          ],
+        ),
       ),
     );
   }
