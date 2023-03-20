@@ -27,9 +27,14 @@ void _initNotiSetting() async {
   final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
   const initSettingsAndroid =
       AndroidInitializationSettings('@mipmap/ic_launcher');
-
+  const initSettingsIOS = DarwinInitializationSettings(
+    requestSoundPermission: false,
+    requestBadgePermission: false,
+    requestAlertPermission: false,
+  );
   const initSettings = InitializationSettings(
     android: initSettingsAndroid,
+    iOS: initSettingsIOS,
   );
   await flutterLocalNotificationsPlugin.initialize(
     initSettings,

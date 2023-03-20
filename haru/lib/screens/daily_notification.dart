@@ -7,22 +7,47 @@ Future dailyAtTimeNotification() async {
   const notiDescription = '테스트메시지';
 
   final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-
-  var android = const AndroidNotificationDetails('id', notiTitle,
-      importance: Importance.max, priority: Priority.max);
-  var detail = NotificationDetails(android: android);
-
-  await flutterLocalNotificationsPlugin
+  final result = await flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<
-          AndroidFlutterLocalNotificationsPlugin>()
-      ?.deleteNotificationChannelGroup('id');
+          IOSFlutterLocalNotificationsPlugin>()
+      ?.requestPermissions(
+        alert: true,
+        badge: true,
+        sound: true,
+      );
 
-  await flutterLocalNotificationsPlugin.zonedSchedule(
-      0, notiTitle, notiDescription, _setNotiTime(), detail,
+  var ios = const DarwinNotificationDetails();
+
+  var android = const AndroidNotificationDetails(
+    'id',
+    notiTitle,
+    importance: Importance.max,
+    priority: Priority.max,
+  );
+
+  var detail = NotificationDetails(
+    android: android,
+    iOS: ios,
+  );
+
+  if (result!) {
+    await flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
+        ?.deleteNotificationChannelGroup('id');
+
+    await flutterLocalNotificationsPlugin.zonedSchedule(
+      0, // id는 unique해야합니다. int값
+      notiTitle,
+      notiDescription,
+      _setNotiTime(),
+      detail,
       androidAllowWhileIdle: true,
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,
-      matchDateTimeComponents: DateTimeComponents.time);
+      matchDateTimeComponents: DateTimeComponents.time,
+    );
+  }
 }
 
 tz.TZDateTime _setNotiTime() {
@@ -31,9 +56,7 @@ tz.TZDateTime _setNotiTime() {
 
   final now = tz.TZDateTime.now(tz.local);
   var scheduledDate =
-      tz.TZDateTime(tz.local, now.year, now.month, now.day, 20, 08);
-  print("==================");
-  print("Wow!!!!!!!!!!!!!!!!!!");
+      tz.TZDateTime(tz.local, now.year, now.month, now.day, 21, 20);
 
   return scheduledDate;
 }
