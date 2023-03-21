@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:haru/screens/daily_notification.dart';
 import 'package:haru/screens/initial_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   _initNotiSetting();
-  dailyAtTimeNotification();
+
   runApp(const MyApp());
 }
 

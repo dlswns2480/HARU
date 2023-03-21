@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:haru/screens/initial_alarm_screen.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:haru/screens/daily_notification.dart';
 
 final List<String> data = <String>[];
 
@@ -74,6 +75,8 @@ class _Alarm extends State<Alarm> {
     } else {
       await prefs.setStringList('settingTimes', []);
     }
+    dailyAtTimeNotification(data);
+    print(data);
   }
 
   @override
