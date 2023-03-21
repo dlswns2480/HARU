@@ -32,7 +32,7 @@ Future dailyAtTimeNotification(List<String> data) async {
 
   if (result != null) {
     // ios기기
-    if (!result) {
+    if (result) {
       await flutterLocalNotificationsPlugin
           .resolvePlatformSpecificImplementation<
               AndroidFlutterLocalNotificationsPlugin>()
@@ -43,7 +43,6 @@ Future dailyAtTimeNotification(List<String> data) async {
         if (data[i].substring(7, 9) == "PM") {
           hour += 12;
         }
-        print(hour);
         int minute = int.parse(data[i].substring(3, 5));
         await flutterLocalNotificationsPlugin.zonedSchedule(
             i, notiTitle, notiDescription, _setNotiTime(hour, minute), detail,
