@@ -30,27 +30,25 @@ Future dailyAtTimeNotification(List<String> data) async {
     iOS: ios,
   );
 
-  if (result != null) {
+  if (result ?? false) {
     // ios기기
-    if (result) {
-      await flutterLocalNotificationsPlugin
-          .resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin>()
-          ?.deleteNotificationChannelGroup('id');
+    await flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
+        ?.deleteNotificationChannelGroup('id');
 
-      for (int i = 0; i < data.length; i++) {
-        int hour = int.parse(data[i].substring(0, 2));
-        if (data[i].substring(7, 9) == "PM") {
-          hour += 12;
-        }
-        int minute = int.parse(data[i].substring(3, 5));
-        await flutterLocalNotificationsPlugin.zonedSchedule(
-            i, notiTitle, notiDescription, _setNotiTime(hour, minute), detail,
-            androidAllowWhileIdle: true,
-            uiLocalNotificationDateInterpretation:
-                UILocalNotificationDateInterpretation.absoluteTime,
-            matchDateTimeComponents: DateTimeComponents.time);
+    for (int i = 0; i < data.length; i++) {
+      int hour = int.parse(data[i].substring(0, 2));
+      if (data[i].substring(7, 9) == "PM") {
+        hour += 12;
       }
+      int minute = int.parse(data[i].substring(3, 5));
+      await flutterLocalNotificationsPlugin.zonedSchedule(
+          i, notiTitle, notiDescription, _setNotiTime(hour, minute), detail,
+          androidAllowWhileIdle: true,
+          uiLocalNotificationDateInterpretation:
+              UILocalNotificationDateInterpretation.absoluteTime,
+          matchDateTimeComponents: DateTimeComponents.time);
     }
   } else {
     // android 기기
