@@ -12,16 +12,17 @@ var categoryItem = [
   '경제',
   '영어',
 ];
-final List<String> imageList = <String>[
-  'https://images.unsplash.com/photo-1584921466621-d3a283cd3744?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2148&q=80',
-  "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2NpZW5jZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-  "https://images.unsplash.com/photo-1454789548928-9efd52dc4031?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c3BhY2V8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
-  'https://images.unsplash.com/photo-1573495804683-641191e042ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2369&q=80',
-  'https://images.unsplash.com/photo-1604594849809-dfedbc827105?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80',
-  'https://images.unsplash.com/photo-1539632346654-dd4c3cffad8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80',
-  'https://images.unsplash.com/photo-1603807008857-ad66b70431aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2373&q=80',
-  'https://images.unsplash.com/photo-1618933974351-e38629016464?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2333&q=80',
+final List<String> categoryImageList = <String>[
+  "assets/images/category_images/muscle.jpg",
+  "assets/images/category_images/medical.jpg",
+  "assets/images/category_images/health.jpg",
+  "assets/images/category_images/saying.jpg",
+  "assets/images/category_images/science.jpg",
+  "assets/images/category_images/IT.jpg",
+  "assets/images/category_images/economy.jpg",
+  "assets/images/category_images/english.jpg",
 ];
+
 final List<IconData> iconList = <IconData>[
   Icons.health_and_safety_outlined,
   Icons.medical_information,
@@ -214,8 +215,8 @@ class _CategorySelectState extends State<CategorySelect> {
                                           ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(30),
-                                            child: Image.network(
-                                              imageList[index],
+                                            child: Image.asset(
+                                              categoryImageList[index],
                                               width: double.infinity,
                                               height: 115,
                                               fit: BoxFit.cover,
