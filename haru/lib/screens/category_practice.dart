@@ -123,13 +123,12 @@ class _CategoryScreenWidgetState extends State<CategoryScreenWidget> {
                       children: const [
                         CategoryCard(
                           title: "명언",
-                          imagePath:
-                              'https://images.unsplash.com/photo-1584921466621-d3a283cd3744?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2148&q=80',
+                          imagePath: "assets/images/category_images/saying.jpg",
                         ),
                         CategoryCard(
                           title: "과학",
                           imagePath:
-                              "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2NpZW5jZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+                              "assets/images/category_images/science.jpg",
                         ),
                       ],
                     ),
@@ -141,13 +140,11 @@ class _CategoryScreenWidgetState extends State<CategoryScreenWidget> {
                       children: const [
                         CategoryCard(
                           title: "천체",
-                          imagePath:
-                              "https://images.unsplash.com/photo-1454789548928-9efd52dc4031?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c3BhY2V8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
+                          imagePath: "assets/images/category_images/saying.jpg",
                         ),
                         CategoryCard(
                           title: "IT",
-                          imagePath:
-                              'https://images.unsplash.com/photo-1573495804683-641191e042ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2369&q=80',
+                          imagePath: "assets/images/category_images/IT.jpg",
                         ),
                       ],
                     ),
@@ -160,12 +157,12 @@ class _CategoryScreenWidgetState extends State<CategoryScreenWidget> {
                         CategoryCard(
                           title: "경제",
                           imagePath:
-                              'https://images.unsplash.com/photo-1604594849809-dfedbc827105?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80',
+                              "assets/images/category_images/economy.jpg",
                         ),
                         CategoryCard(
                           title: "영어",
                           imagePath:
-                              'https://images.unsplash.com/photo-1539632346654-dd4c3cffad8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80',
+                              "assets/images/category_images/english.jpg",
                         ),
                       ],
                     ),
@@ -178,12 +175,11 @@ class _CategoryScreenWidgetState extends State<CategoryScreenWidget> {
                         CategoryCard(
                           title: "의료",
                           imagePath:
-                              'https://images.unsplash.com/photo-1603807008857-ad66b70431aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2373&q=80',
+                              "assets/images/category_images/medical.jpg",
                         ),
                         CategoryCard(
                           title: "생활지식",
-                          imagePath:
-                              'https://images.unsplash.com/photo-1618933974351-e38629016464?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2333&q=80',
+                          imagePath: "assets/images/category_images/saying.jpg",
                         ),
                       ],
                     ),
@@ -306,7 +302,7 @@ class CategoryCard extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(30),
-                child: Image.network(
+                child: Image.asset(
                   imagePath,
                   width: double.infinity,
                   height: 115,

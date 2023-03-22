@@ -12,16 +12,17 @@ var categoryItem = [
   '경제',
   '영어',
 ];
-final List<String> imageList = <String>[
-  'https://images.unsplash.com/photo-1584921466621-d3a283cd3744?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2148&q=80',
-  "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2NpZW5jZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-  "https://images.unsplash.com/photo-1454789548928-9efd52dc4031?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c3BhY2V8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
-  'https://images.unsplash.com/photo-1573495804683-641191e042ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2369&q=80',
-  'https://images.unsplash.com/photo-1604594849809-dfedbc827105?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80',
-  'https://images.unsplash.com/photo-1539632346654-dd4c3cffad8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80',
-  'https://images.unsplash.com/photo-1603807008857-ad66b70431aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2373&q=80',
-  'https://images.unsplash.com/photo-1618933974351-e38629016464?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2333&q=80',
+final List<String> categoryImageList = <String>[
+  "assets/images/category_images/muscle.jpg",
+  "assets/images/category_images/medical.jpg",
+  "assets/images/category_images/health.jpg",
+  "assets/images/category_images/saying.jpg",
+  "assets/images/category_images/science.jpg",
+  "assets/images/category_images/IT.jpg",
+  "assets/images/category_images/economy.jpg",
+  "assets/images/category_images/english.jpg",
 ];
+
 final List<IconData> iconList = <IconData>[
   Icons.health_and_safety_outlined,
   Icons.medical_information,
@@ -98,6 +99,8 @@ class _CategorySelectState extends State<CategorySelect> {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -119,7 +122,7 @@ class _CategorySelectState extends State<CategorySelect> {
       body: Column(
         children: [
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.05,
+            height: screenHeight * 0.05,
             child: Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
               child: Row(
@@ -148,129 +151,131 @@ class _CategorySelectState extends State<CategorySelect> {
               ),
             ),
           ),
-          Container(
-            height: 1.0,
-            width: 400.0,
-            color: Colors.black12,
-          ),
+          const Line(),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.7,
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 7,
-                  vertical: 0,
-                ),
-                child: Column(
-                  children: [
-                    GridView.count(
-                      shrinkWrap: true,
-                      crossAxisCount: 2,
-                      children: List.generate(8, (index) {
-                        return Center(
-                          child: SingleChildScrollView(
-                            child: Column(
-                              children: [
-                                InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      onCategoryTap(index);
-                                      // _selectedCategorys[index] =
-                                      //     !_selectedCategorys[index];
-                                    });
-                                  },
-                                  child: Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.4,
-                                    height: 170,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: _selectedCategorys[index]
-                                            ? Colors.blue
-                                            : Colors.black,
+            height: screenHeight * 0.7,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 7,
+                vertical: 0,
+              ),
+              child: SizedBox(
+                child: SingleChildScrollView(
+                  child: GridView.count(
+                    physics: const ScrollPhysics(),
+                    shrinkWrap: true,
+                    crossAxisCount: 2,
+                    children: List.generate(8, (index) {
+                      return Center(
+                        child: Column(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  onCategoryTap(index);
+                                  // _selectedCategorys[index] =
+                                  //     !_selectedCategorys[index];
+                                });
+                              },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.4,
+                                height: 170,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: _selectedCategorys[index]
+                                        ? Colors.blue
+                                        : Colors.black,
+                                  ),
+                                  // color: FlutterFlowTheme.of(context).secondaryBackground,
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      blurRadius: 3,
+                                      color: Colors.white,
+                                      blurStyle: BlurStyle.solid,
+                                      offset: Offset(0, 0),
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      15, 10, 15, 10),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(30),
+                                        child: Image.asset(
+                                          categoryImageList[index],
+                                          width: double.infinity,
+                                          height: 115,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
-                                      // color: FlutterFlowTheme.of(context).secondaryBackground,
-                                      boxShadow: const [
-                                        BoxShadow(
-                                          blurRadius: 3,
-                                          color: Colors.white,
-                                          blurStyle: BlurStyle.solid,
-                                          offset: Offset(0, 0),
-                                        )
-                                      ],
-                                      borderRadius: BorderRadius.circular(50),
-                                    ),
-                                    child: Padding(
-                                      padding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              15, 10, 15, 10),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(30),
-                                            child: Image.network(
-                                              imageList[index],
-                                              width: double.infinity,
-                                              height: 115,
-                                              fit: BoxFit.cover,
-                                            ),
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(8, 12, 0, 0),
+                                        child: Text(
+                                          categoryItem[index],
+                                          style: TextStyle(
+                                            fontFamily: "NanumSquareRound",
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 18,
+                                            color: _selectedCategorys[index]
+                                                ? Colors.blue
+                                                : Colors.black,
                                           ),
-                                          Padding(
-                                            padding: const EdgeInsetsDirectional
-                                                .fromSTEB(8, 12, 0, 0),
-                                            child: Text(
-                                              categoryItem[index],
-                                              style: TextStyle(
-                                                fontFamily: "NanumSquareRound",
-                                                fontWeight: FontWeight.w700,
-                                                fontSize: 18,
-                                                color: _selectedCategorys[index]
-                                                    ? Colors.blue
-                                                    : Colors.black,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
+                                        ),
                                       ),
-                                    ),
+                                    ],
                                   ),
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
-                        );
-                      }),
-                    ),
-                  ],
+                          ],
+                        ),
+                      );
+                    }),
+                  ),
                 ),
               ),
             ),
           ),
-          Container(
-            height: 1.0,
-            width: 400.0,
-            color: Colors.black12,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.1,
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-              ),
-            ),
-          ),
+          const Line(),
+          // const SizedBox(
+          //   height: 10,
+          // ),
+          // SizedBox(
+          //   height: screenHeight * 0.1,
+          //   child: Padding(
+          //     padding: const EdgeInsets.all(20.0),
+          //     child: Row(
+          //       mainAxisAlignment: MainAxisAlignment.end,
+          //     ),
+          //   ),
+          // ),
         ],
       ),
+    );
+  }
+}
+
+class Line extends StatelessWidget {
+  const Line({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+    return Container(
+      height: screenHeight * 0.0005,
+      width: screenWidth * 0.9,
+      color: Colors.black12,
     );
   }
 }
