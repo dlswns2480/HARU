@@ -123,6 +123,7 @@ class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return WillPopScope(
       onWillPop: onWillPop,
       child: Scaffold(
@@ -146,7 +147,7 @@ class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
         body: Column(
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.05,
+              height: screenHeight * 0.05,
               child: Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
                 child: Row(
@@ -177,7 +178,7 @@ class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
             ),
             const Line(),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.65,
+              height: screenHeight * 0.7,
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 7,
@@ -185,11 +186,11 @@ class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
                 ),
                 child: Column(
                   children: [
-                    const SizedBox(
-                      height: 10,
+                    SizedBox(
+                      height: screenHeight * 0.0001,
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.6,
+                      height: screenHeight * 0.68,
                       child: SingleChildScrollView(
                         child: GridView.count(
                           physics: const ScrollPhysics(),
@@ -208,8 +209,7 @@ class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
                                       });
                                     },
                                     child: Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.4,
+                                      width: screenWidth * 0.4,
                                       height: 170,
                                       decoration: BoxDecoration(
                                         border: Border.all(
@@ -284,7 +284,7 @@ class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
             ),
             const Line(),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.1,
+              height: screenHeight * 0.1,
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Row(
@@ -292,7 +292,7 @@ class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
                   children: [
                     SizedBox(
                       width: 100,
-                      height: 50,
+                      height: screenHeight * 0.05,
                       child: ElevatedButton(
                         onPressed: () {
                           Navigator.push(
@@ -333,9 +333,11 @@ class Line extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Container(
-      height: 1.0,
-      width: MediaQuery.of(context).size.width * 0.9,
+      height: screenHeight * 0.0005,
+      width: screenWidth * 0.9,
       color: Colors.black12,
     );
   }
