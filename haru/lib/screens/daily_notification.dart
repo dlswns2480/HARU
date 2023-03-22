@@ -42,6 +42,10 @@ Future dailyAtTimeNotification(List<String> data) async {
         int hour = int.parse(data[i].substring(0, 2));
         if (data[i].substring(7, 9) == "PM") {
           hour += 12;
+        } else {
+          if (hour == 12) {
+            hour -= 12;
+          }
         }
         int minute = int.parse(data[i].substring(3, 5));
         await flutterLocalNotificationsPlugin.zonedSchedule(
@@ -63,6 +67,10 @@ Future dailyAtTimeNotification(List<String> data) async {
       int hour = int.parse(data[i].substring(0, 2));
       if (data[i].substring(7, 9) == "PM") {
         hour += 12;
+      } else {
+        if (hour == 12) {
+          hour -= 12;
+        }
       }
       print(hour);
       int minute = int.parse(data[i].substring(3, 5));
