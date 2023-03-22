@@ -15,14 +15,14 @@ var categoryItem = [
 ];
 
 final List<String> categoryImageList = <String>[
-  "assets/images/category_images/muscle.jpg",
-  "assets/images/category_images/medical.jpg",
-  "assets/images/category_images/health.jpg",
-  "assets/images/category_images/saying.jpg",
-  "assets/images/category_images/science.jpg",
-  "assets/images/category_images/IT.jpg",
-  "assets/images/category_images/economy.jpg",
-  "assets/images/category_images/english.jpg",
+  "assets/images/category_images/muscle.jpeg",
+  "assets/images/category_images/medical.jpeg",
+  "assets/images/category_images/health.jpeg",
+  "assets/images/category_images/saying.jpeg",
+  "assets/images/category_images/science.jpeg",
+  "assets/images/category_images/IT.jpeg",
+  "assets/images/category_images/economy.jpeg",
+  "assets/images/category_images/english.jpeg",
 ];
 
 final List<IconData> iconList = <IconData>[
