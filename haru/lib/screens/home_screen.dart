@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:haru/screens/category_screen.dart';
-import 'package:haru/screens/home_test.dart';
+import 'package:haru/screens/json_test.dart';
 import 'alarm_screen.dart';
 // int screenIndex = 0;
 // List<Widget> _children = [
@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     // const Text("1번입니다"),
     // const Text("1번입니다"),
 
-    const HomeTest(),
+    const JsonTest(),
     const CategorySelect(),
     const Alarm(),
   ];

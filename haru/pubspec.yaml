@@ -33,9 +33,11 @@ dependencies:
   http: ^0.13.5
   flutter:
     sdk: flutter
+    # flutter/services.dart
 
 
 
+  
   fluttertoast: ^8.1.2
   intl: ^0.18.0
   json_annotation: ^4.8.0
@@ -81,6 +83,7 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
+   - assets/data.json
    - assets/images/workout.jpg
    - assets/images/atom.png
    - assets/images/mevius.jpg
