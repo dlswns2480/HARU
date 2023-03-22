@@ -178,7 +178,7 @@ class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
             ),
             const Line(),
             SizedBox(
-              height: screenHeight * 0.7,
+              height: screenHeight * 0.65,
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 7,
@@ -190,7 +190,7 @@ class _InitialCategorySelect_02State extends State<InitialCategorySelect_02> {
                       height: screenHeight * 0.0001,
                     ),
                     SizedBox(
-                      height: screenHeight * 0.68,
+                      height: screenHeight * 0.64,
                       child: SingleChildScrollView(
                         child: GridView.count(
                           physics: const ScrollPhysics(),
