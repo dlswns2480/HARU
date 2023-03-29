@@ -1,6 +1,7 @@
 {
-  "name": "John Doe",
-  "age": 30,
-  "email": "johndoe@example.com"
+  "title": "과학",
+  "knowledge": "하루지식 내용",
+  "imagePath": "assets/images/celestialBody/aldebaran-s-qtRF_RxCAo0-unsplash.jpg",
+  "author": "저자"
 }
 

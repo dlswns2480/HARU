@@ -1,15 +1,22 @@
 class Person {
-  String name;
-  String email;
-  int age;
+  String title;
+  String knowledge;
+  String imagePath;
+  String author;
 
-  Person({required this.name, required this.email, required this.age});
+  Person({
+    required this.title,
+    required this.knowledge,
+    required this.imagePath,
+    required this.author,
+  });
 
   factory Person.fromJson(Map<String, dynamic> json) {
     return Person(
-      name: json['name'],
-      email: json['email'],
-      age: json['age'],
+      title: json['title'],
+      knowledge: json['knowledge'],
+      imagePath: json['imagePath'],
+      author: json['author'],
     );
   }
 }

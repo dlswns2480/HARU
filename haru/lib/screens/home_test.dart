@@ -1,5 +1,18 @@
+import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:haru/screens/data_model.dart';
+
+Future<String> _loadPersonAsset() async {
+  return await rootBundle.loadString('assets/data.json');
+}
+
+Future<Person> _getPersonData() async {
+  String jsonString = await _loadPersonAsset();
+  final jsonResponse = json.decode(jsonString);
+  return Person.fromJson(jsonResponse);
+}
 
 DateTime dt = DateTime.now();
 
@@ -13,16 +26,33 @@ class HomeTest extends StatefulWidget {
 class _HomeTestState extends State<HomeTest> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: HomeKnowledgeWidget(
-        title: "경제",
-        imagePath:
-            "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80",
-        knowledge:
-            " 그레이 캐피털리즘(Gray Capitalism)이란 정부 통제력이 강한 기존 중국식 자본주의에서 통제를 풀고 시장을 확대하는 과정에 있는 중간적 형태의 자본주 의를 뜻한다.",
-        author: "null",
-      ),
+    return FutureBuilder<Person>(
+      future: _getPersonData(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return HomeKnowledgeWidget(
+            title: snapshot.data!.title,
+            imagePath: snapshot.data!.imagePath,
+            knowledge: snapshot.data!.knowledge,
+            author: snapshot.data!.author,
+          );
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error}');
+        }
+        return const CircularProgressIndicator();
+      },
     );
+
+    // const Scaffold(
+    //   body: HomeKnowledgeWidget(
+    //     title: "경제",
+    //     imagePath:
+    //         "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80",
+    //     knowledge:
+    //         " 그레이 캐피털리즘(Gray Capitalism)이란 정부 통제력이 강한 기존 중국식 자본주의에서 통제를 풀고 시장을 확대하는 과정에 있는 중간적 형태의 자본주 의를 뜻한다.",
+    //     author: "null",
+    //   ),
+    // );
   }
 }
 
@@ -55,7 +85,7 @@ class HomeKnowledgeWidget extends StatelessWidget {
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: NetworkImage(
+                image: AssetImage(
                   imagePath,
                 ),
               ),
