@@ -37,7 +37,8 @@ Future dailyAtTimeNotification(List<String> data) async {
           .resolvePlatformSpecificImplementation<
               AndroidFlutterLocalNotificationsPlugin>()
           ?.deleteNotificationChannelGroup('id');
-
+      var data1 = data.toSet();
+      data = data1.toList();
       for (int i = 0; i < data.length; i++) {
         int hour = int.parse(data[i].substring(0, 2));
         if (data[i].substring(7, 9) == "PM") {

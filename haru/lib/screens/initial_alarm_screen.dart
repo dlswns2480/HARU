@@ -4,6 +4,7 @@ import 'package:haru/screens/home_screen.dart';
 import 'package:haru/screens/initial_category_screen.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:haru/widgets/daily_notification.dart';
 
 final List<String> data = <String>[];
 
@@ -350,6 +351,7 @@ class _InitialAlarm extends State<InitialAlarm> {
                     onPressed: () async {
                       Navigator.of(context).pop(tempPickedDate);
                       FocusScope.of(context).unfocus();
+                      dailyAtTimeNotification(data);
                       // settingTimes.add(tempPickedDate.toString());
                       // await prefs.setStringList('settingTimes', settingTimes);
                       // setState(() => setTime[0] = !setTime[0]);
