@@ -63,7 +63,8 @@ Future dailyAtTimeNotification(List<String> data) async {
         .resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>()
         ?.deleteNotificationChannelGroup('id');
-
+    var data1 = data.toSet();
+    data = data1.toList();
     for (int i = 0; i < data.length; i++) {
       int hour = int.parse(data[i].substring(0, 2));
       if (data[i].substring(7, 9) == "PM") {
@@ -73,7 +74,7 @@ Future dailyAtTimeNotification(List<String> data) async {
           hour -= 12;
         }
       }
-      print(hour);
+
       int minute = int.parse(data[i].substring(3, 5));
       await flutterLocalNotificationsPlugin.zonedSchedule(
           i, notiTitle, notiDescription, _setNotiTime(hour, minute), detail,
