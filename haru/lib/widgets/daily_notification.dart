@@ -1,10 +1,53 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
+import 'dart:convert';
+import 'package:flutter/services.dart' show rootBundle;
+
+class Person {
+  String title;
+  String knowledge;
+  String imagePath;
+  String author;
+
+  Person({
+    required this.title,
+    required this.knowledge,
+    required this.imagePath,
+    required this.author,
+  });
+
+  factory Person.fromJson(Map<String, dynamic> json) {
+    return Person(
+      title: json['title'],
+      knowledge: json['knowledge'],
+      imagePath: json['imagePath'],
+      author: json['author'],
+    );
+  }
+}
+
+Future<String> _loadPersonAsset() async {
+  return await rootBundle.loadString('assets/data.json');
+}
+
+Future<String> getPersonDataTitle() async {
+  String jsonString = await _loadPersonAsset();
+  var jsonResponse = json.decode(jsonString);
+  return jsonResponse['title'];
+}
+
+Future<String> getPersonDataDescription() async {
+  String jsonString = await _loadPersonAsset();
+  var jsonResponse = json.decode(jsonString);
+  return jsonResponse['knowledge'];
+}
 
 Future dailyAtTimeNotification(List<String> data) async {
-  const notiTitle = '사용자 지정 시간 알림 테스트';
-  const notiDescription = '테스트메시지';
+  Future<String> jsonTitleData = getPersonDataTitle();
+  Future<String> jsonDescriptionData = getPersonDataDescription();
+  var notiTitle = await jsonTitleData;
+  var notiDescription = await jsonDescriptionData;
 
   final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
   final result = await flutterLocalNotificationsPlugin
@@ -18,7 +61,7 @@ Future dailyAtTimeNotification(List<String> data) async {
 
   var ios = const DarwinNotificationDetails();
 
-  var android = const AndroidNotificationDetails(
+  var android = AndroidNotificationDetails(
     'id',
     notiTitle,
     importance: Importance.max,
