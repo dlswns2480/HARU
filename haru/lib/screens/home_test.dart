@@ -3,6 +3,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:haru/models/knowledge_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+var categoryList = []; //선택된 카테고리들을 shared_preferences에서 옮길 리스트
 
 Future<String> _loadKnowledgeAsset() async {
   return await rootBundle.loadString('assets/data.json');
@@ -51,6 +54,30 @@ class _HomeTestState extends State<HomeTest> {
     //     author: "null",
     //   ),
     // );
+  }
+
+  late SharedPreferences prefs;
+
+  Future initprefs() async {
+    prefs = await SharedPreferences.getInstance();
+    final selectedCategory = prefs.getStringList('selectedCategory') ?? [];
+    if (selectedCategory.isNotEmpty) {
+      categoryList.clear();
+      for (int i = 0; i < selectedCategory.length; i++) { 
+        setState(() { //shared_preferences에서 하나씩 가져와 categoryList에 옮기기
+          categoryList.add(selectedCategory[i]);          
+        });
+      }
+      await prefs.setStringList('selectedCategory', selectedCategory);
+    } else {
+      await prefs.setStringList('selectedCategory', []);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    initprefs();
   }
 }
 
