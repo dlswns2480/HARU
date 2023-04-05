@@ -2,40 +2,17 @@ import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:haru/models/knowledge_model.dart';
 
-class DataManager {
-  int _lastDisplayedIndex = 0;
-  late List<Knowledge> _dataList;
+import 'dart:async';
 
-  Future<void> init() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    _lastDisplayedIndex = prefs.getInt('lastDisplayedIndex') ?? 0;
-    await loadData();
-  }
+final nowTime = DateTime.now();
+final fiftyDaysFromNow = nowTime.add(const Duration(minutes: 1));
+int lastIndex = 0;
 
-  Future<void> loadData() async {
-    final String jsonString = await rootBundle.loadString('assets/data.json');
-    final List<dynamic> data = jsonDecode(jsonString);
-    _dataList = data.map((e) => Knowledge.fromJson(e)).toList();
-  }
+var category = ['운동', '의료', '건강', '명언', '과학', 'IT', '경제', '영어'];
 
-  Knowledge getNextData() {
-    if (_lastDisplayedIndex >= _dataList.length) {
-      _lastDisplayedIndex = 0;
-    }
-    final Knowledge nextData = _dataList[_lastDisplayedIndex];
-    _lastDisplayedIndex++;
-    return nextData;
-  }
-
-  Future<void> updateLastDisplayedIndex() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setInt('lastDisplayedIndex', _lastDisplayedIndex);
-  }
-}
-
+int categoryIndex = 0;
 Future<String> _loadKnowledgeAsset() async {
   return await rootBundle.loadString('assets/data.json');
 }
@@ -43,15 +20,19 @@ Future<String> _loadKnowledgeAsset() async {
 Future<Knowledge> _getKnowledgeData() async {
   String jsonString = await _loadKnowledgeAsset();
   final jsonResponse = json.decode(jsonString);
-  return Knowledge.fromJson(jsonResponse, "운동", 0); // 현재 운동 카테고리의 2번째 지식입니다.
+
+  Timer.periodic(const Duration(seconds: 3), (Timer t) {
+    lastIndex++; //매 주기마다 index를 증가시켜 data를 주기마다 다른 것을 가져옴
+    if (lastIndex > 2) {
+      // 3초마다 Timer.periodic안에 있는 구문을 실행
+      lastIndex = 0;
+    }
+  });
+  return Knowledge.fromJson(
+      jsonResponse, category[lastIndex], lastIndex); // 현재 운동 카테고리의 2번째 지식입니다.
 }
 
 DateTime dt = DateTime.now();
-
-DateTime calculateNotificationTime() {
-  // Calculate the notification time based on the user's settings
-  return DateTime.now().add(const Duration(minutes: 1));
-}
 
 class HomeTest extends StatefulWidget {
   const HomeTest({super.key});
@@ -61,7 +42,6 @@ class HomeTest extends StatefulWidget {
 }
 
 class _HomeTestState extends State<HomeTest> {
-  final DataManager _dataManager = DataManager();
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<Knowledge>(
@@ -69,9 +49,8 @@ class _HomeTestState extends State<HomeTest> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return HomeKnowledgeWidget(
-            title: _dataManager.getNextData().title, //snapshot.data!.title,
-            titleLarge: _dataManager.getNextData().title,
-            knowledge: _dataManager.getNextData().knowledge,
+            title: snapshot.data!.title,
+            knowledge: snapshot.data!.knowledge,
           );
         } else if (snapshot.hasError) {
           return Text('${snapshot.error}');
@@ -79,6 +58,17 @@ class _HomeTestState extends State<HomeTest> {
         return const CircularProgressIndicator();
       },
     );
+
+    // const Scaffold(
+    //   body: HomeKnowledgeWidget(
+    //     title: "경제",
+    //     imagePath:
+    //         "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80",
+    //     knowledge:
+    //         " 그레이 캐피털리즘(Gray Capitalism)이란 정부 통제력이 강한 기존 중국식 자본주의에서 통제를 풀고 시장을 확대하는 과정에 있는 중간적 형태의 자본주 의를 뜻한다.",
+    //     author: "null",
+    //   ),
+    // );
   }
 }
 
@@ -86,12 +76,11 @@ class _HomeTestState extends State<HomeTest> {
 class HomeKnowledgeWidget extends StatelessWidget {
   final String title;
   final String knowledge;
-  final String titleLarge;
+
   const HomeKnowledgeWidget({
     super.key,
     required this.title,
     required this.knowledge,
-    required this.titleLarge,
   });
 
   @override
@@ -255,7 +244,7 @@ class HomeKnowledgeWidget extends StatelessWidget {
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: const [
                                         Icon(
-                                          Icons.Knowledge,
+                                          Icons.person,
                                           color: Colors.white,
                                           size: 20,
                                         ),
