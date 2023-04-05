@@ -1,15 +1,114 @@
-{"Haru" :[
 {
-  "title": "과학",
-  "knowledge": "하루지식 내용",
-  "imagePath": "assets/images/celestialBody/aldebaran-s-qtRF_RxCAo0-unsplash.jpg",
-  "author": "저자"
-},
-{
-  "title": "영어",
-  "knowledge": "기무띠",
-  "imagePath": "assets/images/celestialBody/aldebaran-s-qtRF_RxCAo0-unsplash.jpg",
-  "author": "저자"
-}
+  "운동":[
+    {
+      "title": "운동",
+      "knowledge": "운동 지식1"
+    },
+    {
+      "title": "운동",
+      "knowledge": "운동 지식2"
+    },
+    {
+      "title": "운동",
+      "knowledge": "운동 지식3"
+    }
+  ],  
+"의료":[
+  {
+    "title": "의료",
+    "knowledge": "의료 지식1"
+  },
+  {
+    "title": "의료",
+    "knowledge": "의료 지식2"
+  },
+  {
+    "title": "의료",
+    "knowledge": "의료 지식3"
+  }
+],
+"건강":[
+  {
+    "title": "건강",
+    "knowledge": "건강 지식1"
+  },
+  {
+    "title": "건강",
+    "knowledge": "건강 지식2"
+  },
+  {
+    "title": "건강",
+    "knowledge": "건강 지식3"
+  }
+],
+"명언":[
+  {
+    "title": "명언",
+    "knowledge": "명언 지식1"
+  },
+  {
+    "title": "명언",
+    "knowledge": "명언 지식2"
+  },
+  {
+    "title": "명언",
+    "knowledge": "명언 지식3"
+  }
+],
+"과학":[
+  {
+    "title": "과학",
+    "knowledge": "과학 지식1"
+  },
+  {
+    "title": "과학",
+    "knowledge": "과학 지식2"
+  },
+  {
+    "title": "과학",
+    "knowledge": "과학 지식3"
+  }
+],
+"IT":[
+  {
+    "title": "IT",
+    "knowledge": "IT 지식1"
+  },
+  {
+    "title": "IT",
+    "knowledge": "IT 지식2"
+  },
+  {
+    "title": "IT",
+    "knowledge": "IT 지식3"
+  }
+],
+"경제":[
+  {
+    "title": "경제",
+    "knowledge": "경제 지식1"
+  },
+  {
+    "title": "경제",
+    "knowledge": "경제 지식2"
+  },
+  {
+    "title": "경제",
+    "knowledge": "경제 지식3"
+  }
+],
+"영어":[
+  {
+    "title": "영어",
+    "knowledge": "영어 지식1"
+  },
+  {
+    "title": "영어",
+    "knowledge": "영어 지식2"
+  },
+  {
+    "title": "영어",
+    "knowledge": "영어 지식3"
+  }
 ]
 }

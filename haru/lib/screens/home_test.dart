@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:haru/screens/data_model.dart';
+import 'package:haru/widgets/daily_notification.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DataManager {
@@ -70,9 +70,8 @@ class _HomeTestState extends State<HomeTest> {
         if (snapshot.hasData) {
           return HomeKnowledgeWidget(
             title: _dataManager.getNextData().title, //snapshot.data!.title,
-            imagePath: snapshot.data!.imagePath,
-            knowledge: snapshot.data!.knowledge,
-            author: snapshot.data!.author,
+            titleLarge: _dataManager.getNextData().title,
+            knowledge: _dataManager.getNextData().knowledge,
           );
         } else if (snapshot.hasError) {
           return Text('${snapshot.error}');
@@ -97,16 +96,14 @@ class _HomeTestState extends State<HomeTest> {
 @immutable
 class HomeKnowledgeWidget extends StatelessWidget {
   final String title;
-  final String imagePath;
-  final String knowledge;
-  final String author;
 
+  final String knowledge;
+  final String titleLarge;
   const HomeKnowledgeWidget({
     super.key,
     required this.title,
-    required this.imagePath,
     required this.knowledge,
-    required this.author,
+    required this.titleLarge,
   });
 
   @override
@@ -120,11 +117,11 @@ class HomeKnowledgeWidget extends StatelessWidget {
           Container(
             width: double.infinity,
             height: MediaQuery.of(context).size.height * 1,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
                 image: AssetImage(
-                  imagePath,
+                  "assets/images/category_images/IT.jpeg",
                 ),
               ),
             ),
@@ -268,23 +265,23 @@ class HomeKnowledgeWidget extends StatelessWidget {
                                     Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        const Icon(
+                                      children: const [
+                                        Icon(
                                           Icons.person,
                                           color: Colors.white,
                                           size: 20,
                                         ),
-                                        (author != "null")
-                                            ? Text(
-                                                author,
-                                                style: const TextStyle(
-                                                    color: Colors.white54,
-                                                    fontFamily:
-                                                        'NanumGothicEco',
-                                                    fontWeight: FontWeight.w300,
-                                                    fontSize: 20),
-                                              )
-                                            : const Text(""),
+                                        // (author != "null")
+                                        //     ? Text(
+                                        //         author,
+                                        //         style: const TextStyle(
+                                        //             color: Colors.white54,
+                                        //             fontFamily:
+                                        //                 'NanumGothicEco',
+                                        //             fontWeight: FontWeight.w300,
+                                        //             fontSize: 20),
+                                        //       )
+                                        // : const Text(""),
                                       ],
                                     ),
                                   ],
