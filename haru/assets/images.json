@@ -1,0 +1,90 @@
+{
+    "운동":[
+        {
+            "imagePath": "images/muscle/muscle_1.jpg"
+        },
+        {
+            "imagePath": "images/muscle/muscle_2.jpg"
+        },
+        {
+            "imagePath": "images/muscle/muscle_3.jpg"
+        }
+    ],  
+    "의료":[
+        {
+            "imagePath": "images/medicine/medicine_1.jpg"
+        },
+        {
+            "imagePath": "images/medicine/medicine_2.jpg"
+        },
+        {
+            "imagePath": "images/medicine/medicine_3.jpg"
+        }
+    ],
+    "건강":[
+        {
+            "imagePath": "images/health/health_1.jpg"
+        },
+        {
+            "imagePath": "images/health/health_2.jpg"
+        },
+        {
+            "imagePath": "images/health/health_3.jpg"
+        }
+    ],
+    "명언":[
+        {
+            "imagePath": "images/saying/saying_1.jpg"
+        },
+        {
+            "imagePath": "images/saying/saying_2.jpg"
+        },
+        {
+            "imagePath": "images/saying/saying_1.jpg"
+        }
+    ],    
+    "과학":[
+        {
+            "imagePath": "images/science/science_1.jpg"
+        },
+        {
+            "imagePath": "images/science/science_2.jpg"
+        },
+        {
+            "imagePath": "images/science/science_3.jpg"
+        }
+    ],
+     "IT":[
+        {
+            "imagePath": "images/IT/IT_1.jpg"
+        },
+        {
+            "imagePath": "images/IT/IT_2.jpg"
+        },
+        {
+            "imagePath": "images/IT/IT_3.jpg"
+        }
+    ],
+    "경제":[
+        {
+            "imagePath": "images/economy/economy_1.jpg"
+        },
+        {
+            "imagePath": "images/economy/economy_2.jpg"
+        },
+        {
+            "imagePath": "images/economy/economy_3.jpg"
+        }
+    ],
+    "영어":[
+        {
+            "imagePath": "images/english/english_1.jpg"
+        },
+        {
+            "imagePath": "images/english/english_2.jpg"
+        },
+        {
+            "imagePath": "images/english/english_3.jpg"
+        }
+    ]
+}

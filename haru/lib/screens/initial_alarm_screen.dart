@@ -163,7 +163,10 @@ class _InitialAlarm extends State<InitialAlarm> {
                               color: Colors.red,
                               size: 30,
                             ),
-                            onPressed: () => onDelete(context, index),
+                            onPressed: () => {
+                              onDelete(context, index),
+                              dailyAtTimeNotification(data),
+                            },
                           ),
                         );
                       },

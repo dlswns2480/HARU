@@ -79,17 +79,6 @@ class _HomeTestState extends State<HomeTest> {
         return const CircularProgressIndicator();
       },
     );
-
-    // const Scaffold(
-    //   body: HomeKnowledgeWidget(
-    //     title: "경제",
-    //     imagePath:
-    //         "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80",
-    //     knowledge:
-    //         " 그레이 캐피털리즘(Gray Capitalism)이란 정부 통제력이 강한 기존 중국식 자본주의에서 통제를 풀고 시장을 확대하는 과정에 있는 중간적 형태의 자본주 의를 뜻한다.",
-    //     author: "null",
-    //   ),
-    // );
   }
 }
 
