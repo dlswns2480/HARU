@@ -83,15 +83,16 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
-
+   - assets/images.json
    - assets/data.json
-   - assets/images/workout.jpg
-   - assets/images/atom.png
-   - assets/images/mevius.jpg
-
+   - assets/images/
+  #  - assets/images/workout.jpg
+  #  - assets/images/atom.png
+  #  - assets/images/mevius.jpg
+   
    - assets/images/celestialBody/
    - assets/images/category_images/
-
+   
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
