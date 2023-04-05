@@ -3,6 +3,38 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:haru/screens/data_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class DataManager {
+  int _lastDisplayedIndex = 0;
+  late List<Person> _dataList;
+
+  Future<void> init() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    _lastDisplayedIndex = prefs.getInt('lastDisplayedIndex') ?? 0;
+    await loadData();
+  }
+
+  Future<void> loadData() async {
+    final String jsonString = await rootBundle.loadString('assets/data.json');
+    final List<dynamic> data = jsonDecode(jsonString);
+    _dataList = data.map((e) => Person.fromJson(e)).toList();
+  }
+
+  Person getNextData() {
+    if (_lastDisplayedIndex >= _dataList.length) {
+      _lastDisplayedIndex = 0;
+    }
+    final Person nextData = _dataList[_lastDisplayedIndex];
+    _lastDisplayedIndex++;
+    return nextData;
+  }
+
+  Future<void> updateLastDisplayedIndex() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('lastDisplayedIndex', _lastDisplayedIndex);
+  }
+}
 
 Future<String> _loadPersonAsset() async {
   return await rootBundle.loadString('assets/data.json');
@@ -16,6 +48,11 @@ Future<Person> _getPersonData() async {
 
 DateTime dt = DateTime.now();
 
+DateTime calculateNotificationTime() {
+  // Calculate the notification time based on the user's settings
+  return DateTime.now().add(const Duration(minutes: 1));
+}
+
 class HomeTest extends StatefulWidget {
   const HomeTest({super.key});
 
@@ -24,6 +61,7 @@ class HomeTest extends StatefulWidget {
 }
 
 class _HomeTestState extends State<HomeTest> {
+  final DataManager _dataManager = DataManager();
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<Person>(
@@ -31,7 +69,7 @@ class _HomeTestState extends State<HomeTest> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return HomeKnowledgeWidget(
-            title: snapshot.data!.title,
+            title: _dataManager.getNextData().title, //snapshot.data!.title,
             imagePath: snapshot.data!.imagePath,
             knowledge: snapshot.data!.knowledge,
             author: snapshot.data!.author,

@@ -1,0 +1,28 @@
+stash@{0}: WIP on exam_01_01: 601a96d json 데이터 받아서 알림에 띄움
+stash@{1}: WIP on exam_01_01: 4796c54 Json 데이터를 받아서 홈 화면 UI 구현 (사진 입력 시 pubspec.yaml에 Path 추가해야 함)
+stash@{2}: WIP on exam_01_01: 4796c54 Json 데이터를 받아서 홈 화면 UI 구현 (사진 입력 시 pubspec.yaml에 Path 추가해야 함)
+stash@{3}: WIP on exam_01_01: be94716 안드로이드 리스트 -> set -> 리스트
+stash@{4}: WIP on exam_01_01: 7ce9afc 고화질 이미지로 인해 애뮬레이터 튕김 현상 개선 (이미지 화질 낮춤으로써 해결)
+stash@{5}: WIP on exam_01_01: 7ce9afc 고화질 이미지로 인해 애뮬레이터 튕김 현상 개선 (이미지 화질 낮춤으로써 해결)
+stash@{6}: WIP on exam_01_01: 7ce9afc 고화질 이미지로 인해 애뮬레이터 튕김 현상 개선 (이미지 화질 낮춤으로써 해결)
+stash@{7}: WIP on exam_01_01: d5c0ab9 파이어베이스 연동 이전으로 되돌린 후, 로컬 알림 설정 기능 추가(시간 설정 가능)
+stash@{8}: WIP on exam_01: bb37fb3 백그라운드 및 종료 시 heads up 알림 기능 구현(foreground는 미구현)
+stash@{9}: WIP on exam_01: bb37fb3 백그라운드 및 종료 시 heads up 알림 기능 구현(foreground는 미구현)
+stash@{10}: WIP on exam_01: bb37fb3 백그라운드 및 종료 시 heads up 알림 기능 구현(foreground는 미구현)
+stash@{11}: WIP on exam_01: bb37fb3 백그라운드 및 종료 시 heads up 알림 기능 구현(foreground는 미구현)
+stash@{12}: WIP on exam_01: a714765 fix pixel error of category page
+stash@{13}: WIP on exam_01: 65073aa Merge branch 'exam_01' of https://github.com/dlswns2480/HARU into exam_01
+stash@{14}: WIP on exam_01: 65073aa Merge branch 'exam_01' of https://github.com/dlswns2480/HARU into exam_01
+stash@{15}: WIP on exam_01: 530a9d7 Merge
+stash@{16}: WIP on exam_01: 3eb97cb 카테고리에서 나갈때 나갈거냐?라고 물어보기 추가
+stash@{17}: WIP on exam_01: e9dea5e 초기 카테고리 화면 오류 수정 (이제 부분 스크롤 가능)
+stash@{18}: WIP on master: 747d034 Update file name
+stash@{19}: WIP on master: 747d034 Update file name
+stash@{20}: WIP on exam_01: 8d8e77f initail category화면 -> initial alarm화면 -> home_screen
+stash@{21}: WIP on exam_01: bcaac9d Update IconList
+stash@{22}: WIP on exam_01: 5238f55 Move initial_screen.dart content to initial_category_screen.dart
+stash@{23}: WIP on exam_01: 883a25b Withhold image error
+stash@{24}: WIP on exam_01: 883a25b Withhold image error
+stash@{25}: WIP on exam_01: 883a25b Withhold image error
+stash@{26}: WIP on exam_01: 883a25b Withhold image error
+stash@{27}: WIP on exam_01: df5d112 Delete .DS_Store
