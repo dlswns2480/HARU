@@ -3,9 +3,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:haru/models/knowledge_model.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-var categoryList = []; //선택된 카테고리들을 shared_preferences에서 옮길 리스트
 
 Future<String> _loadKnowledgeAsset() async {
   return await rootBundle.loadString('assets/data.json');
@@ -43,41 +40,6 @@ class _HomeTestState extends State<HomeTest> {
         return const CircularProgressIndicator();
       },
     );
-
-    // const Scaffold(
-    //   body: HomeKnowledgeWidget(
-    //     title: "경제",
-    //     imagePath:
-    //         "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80",
-    //     knowledge:
-    //         " 그레이 캐피털리즘(Gray Capitalism)이란 정부 통제력이 강한 기존 중국식 자본주의에서 통제를 풀고 시장을 확대하는 과정에 있는 중간적 형태의 자본주 의를 뜻한다.",
-    //     author: "null",
-    //   ),
-    // );
-  }
-
-  late SharedPreferences prefs;
-
-  Future initprefs() async {
-    prefs = await SharedPreferences.getInstance();
-    final selectedCategory = prefs.getStringList('selectedCategory') ?? [];
-    if (selectedCategory.isNotEmpty) {
-      categoryList.clear();
-      for (int i = 0; i < selectedCategory.length; i++) { 
-        setState(() { //shared_preferences에서 하나씩 가져와 categoryList에 옮기기
-          categoryList.add(selectedCategory[i]);          
-        });
-      }
-      await prefs.setStringList('selectedCategory', selectedCategory);
-    } else {
-      await prefs.setStringList('selectedCategory', []);
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    initprefs();
   }
 }
 
