@@ -11,7 +11,7 @@ Future<String> _loadKnowledgeAsset() async {
 Future<Knowledge> _getKnowledgeData() async {
   String jsonString = await _loadKnowledgeAsset();
   final jsonResponse = json.decode(jsonString);
-  return Knowledge.fromJson(jsonResponse);
+  return Knowledge.fromJson(jsonResponse, "운동", 0); // 현재 운동 카테고리의 2번째 지식입니다.
 }
 
 DateTime dt = DateTime.now();
