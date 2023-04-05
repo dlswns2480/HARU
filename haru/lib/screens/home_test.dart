@@ -2,12 +2,12 @@ import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:haru/widgets/daily_notification.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:haru/models/knowledge_model.dart';
 
 class DataManager {
   int _lastDisplayedIndex = 0;
-  late List<Person> _dataList;
+  late List<Knowledge> _dataList;
 
   Future<void> init() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -18,14 +18,14 @@ class DataManager {
   Future<void> loadData() async {
     final String jsonString = await rootBundle.loadString('assets/data.json');
     final List<dynamic> data = jsonDecode(jsonString);
-    _dataList = data.map((e) => Person.fromJson(e)).toList();
+    _dataList = data.map((e) => Knowledge.fromJson(e)).toList();
   }
 
-  Person getNextData() {
+  Knowledge getNextData() {
     if (_lastDisplayedIndex >= _dataList.length) {
       _lastDisplayedIndex = 0;
     }
-    final Person nextData = _dataList[_lastDisplayedIndex];
+    final Knowledge nextData = _dataList[_lastDisplayedIndex];
     _lastDisplayedIndex++;
     return nextData;
   }
@@ -36,14 +36,14 @@ class DataManager {
   }
 }
 
-Future<String> _loadPersonAsset() async {
+Future<String> _loadKnowledgeAsset() async {
   return await rootBundle.loadString('assets/data.json');
 }
 
-Future<Person> _getPersonData() async {
-  String jsonString = await _loadPersonAsset();
+Future<Knowledge> _getKnowledgeData() async {
+  String jsonString = await _loadKnowledgeAsset();
   final jsonResponse = json.decode(jsonString);
-  return Person.fromJson(jsonResponse);
+  return Knowledge.fromJson(jsonResponse);
 }
 
 DateTime dt = DateTime.now();
@@ -64,8 +64,8 @@ class _HomeTestState extends State<HomeTest> {
   final DataManager _dataManager = DataManager();
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<Person>(
-      future: _getPersonData(),
+    return FutureBuilder<Knowledge>(
+      future: _getKnowledgeData(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return HomeKnowledgeWidget(
@@ -96,7 +96,6 @@ class _HomeTestState extends State<HomeTest> {
 @immutable
 class HomeKnowledgeWidget extends StatelessWidget {
   final String title;
-
   final String knowledge;
   final String titleLarge;
   const HomeKnowledgeWidget({
@@ -267,7 +266,7 @@ class HomeKnowledgeWidget extends StatelessWidget {
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: const [
                                         Icon(
-                                          Icons.person,
+                                          Icons.Knowledge,
                                           color: Colors.white,
                                           size: 20,
                                         ),
