@@ -1,47 +1,20 @@
+import 'dart:convert';
+
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
-import 'dart:convert';
-import 'package:flutter/services.dart' show rootBundle;
 
-class Person {
-  String title;
-  String knowledge;
-
-  Person({
-    required this.title,
-    required this.knowledge,
-  });
-
-  factory Person.fromJson(Map<String, dynamic> json) {
-    return Person(
-      title: json['title'],
-      knowledge: json['knowledge'],
-    );
+String jsonString = '''
+  {
+    "name": "bebe",
+    "age": 25,
   }
-}
-
-Future<String> _loadPersonAsset() async {
-  return await rootBundle.loadString('assets/data.json');
-}
-
-Future<String> getPersonDataTitle() async {
-  String jsonString = await _loadPersonAsset();
-  var jsonResponse = json.decode(jsonString);
-  return jsonResponse['title'];
-}
-
-Future<String> getPersonDataDescription() async {
-  String jsonString = await _loadPersonAsset();
-  var jsonResponse = json.decode(jsonString);
-  return jsonResponse['knowledge'];
-}
+''';
+Map<String, dynamic> jsonResponse = json.decode(jsonString);
 
 Future dailyAtTimeNotification(List<String> data) async {
-  Future<String> jsonTitleData = getPersonDataTitle();
-  Future<String> jsonDescriptionData = getPersonDataDescription();
-  var notiTitle = await jsonTitleData;
-  var notiDescription = await jsonDescriptionData;
+  const notiTitle = '사용자 지정 시간 알림 테스트';
+  const notiDescription = '테스트메시지';
 
   final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
   final result = await flutterLocalNotificationsPlugin
@@ -55,7 +28,7 @@ Future dailyAtTimeNotification(List<String> data) async {
 
   var ios = const DarwinNotificationDetails();
 
-  var android = AndroidNotificationDetails(
+  var android = const AndroidNotificationDetails(
     'id',
     notiTitle,
     importance: Importance.max,
@@ -74,8 +47,7 @@ Future dailyAtTimeNotification(List<String> data) async {
           .resolvePlatformSpecificImplementation<
               AndroidFlutterLocalNotificationsPlugin>()
           ?.deleteNotificationChannelGroup('id');
-      var data1 = data.toSet();
-      data = data1.toList();
+
       for (int i = 0; i < data.length; i++) {
         int hour = int.parse(data[i].substring(0, 2));
         if (data[i].substring(7, 9) == "PM") {
@@ -100,8 +72,7 @@ Future dailyAtTimeNotification(List<String> data) async {
         .resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>()
         ?.deleteNotificationChannelGroup('id');
-    var data1 = data.toSet();
-    data = data1.toList();
+
     for (int i = 0; i < data.length; i++) {
       int hour = int.parse(data[i].substring(0, 2));
       if (data[i].substring(7, 9) == "PM") {
@@ -111,7 +82,7 @@ Future dailyAtTimeNotification(List<String> data) async {
           hour -= 12;
         }
       }
-
+      print(hour);
       int minute = int.parse(data[i].substring(3, 5));
       await flutterLocalNotificationsPlugin.zonedSchedule(
           i, notiTitle, notiDescription, _setNotiTime(hour, minute), detail,
