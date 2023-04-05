@@ -28,13 +28,13 @@ Future<String> _loadKnowledgeAsset() async {
 Future<String> getKnowledgeDataTitle() async {
   String jsonString = await _loadKnowledgeAsset();
   var jsonResponse = json.decode(jsonString);
-  return jsonResponse['title'];
+  return jsonResponse["운동"][0]['title']; // default 지식 (파라미터로 변경 작업 필요)
 }
 
 Future<String> getKnowledgeDataDescription() async {
   String jsonString = await _loadKnowledgeAsset();
   var jsonResponse = json.decode(jsonString);
-  return jsonResponse['knowledge'];
+  return jsonResponse["운동"][0]['knowledge']; // default 지식 (파라미터로 변경 작업 필요)
 }
 
 Future dailyAtTimeNotification(List<String> data) async {
