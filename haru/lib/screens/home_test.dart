@@ -2,16 +2,16 @@ import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:haru/widgets/daily_notification.dart';
+import 'package:haru/models/knowledge_model.dart';
 
-Future<String> _loadPersonAsset() async {
+Future<String> _loadKnowledgeAsset() async {
   return await rootBundle.loadString('assets/data.json');
 }
 
-Future<Person> _getPersonData() async {
-  String jsonString = await _loadPersonAsset();
+Future<Knowledge> _getKnowledgeData() async {
+  String jsonString = await _loadKnowledgeAsset();
   final jsonResponse = json.decode(jsonString);
-  return Person.fromJson(jsonResponse);
+  return Knowledge.fromJson(jsonResponse);
 }
 
 DateTime dt = DateTime.now();
@@ -26,8 +26,8 @@ class HomeTest extends StatefulWidget {
 class _HomeTestState extends State<HomeTest> {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<Person>(
-      future: _getPersonData(),
+    return FutureBuilder<Knowledge>(
+      future: _getKnowledgeData(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return HomeKnowledgeWidget(
@@ -57,7 +57,6 @@ class _HomeTestState extends State<HomeTest> {
 @immutable
 class HomeKnowledgeWidget extends StatelessWidget {
   final String title;
-
   final String knowledge;
 
   const HomeKnowledgeWidget({

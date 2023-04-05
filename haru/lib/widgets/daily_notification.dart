@@ -4,42 +4,42 @@ import 'package:timezone/timezone.dart' as tz;
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 
-class Person {
-  String title;
-  String knowledge;
+// class Person {
+//   String title;
+//   String knowledge;
 
-  Person({
-    required this.title,
-    required this.knowledge,
-  });
+//   Person({
+//     required this.title,
+//     required this.knowledge,
+//   });
 
-  factory Person.fromJson(Map<String, dynamic> json) {
-    return Person(
-      title: json['title'],
-      knowledge: json['knowledge'],
-    );
-  }
-}
+//   factory Person.fromJson(Map<String, dynamic> json) {
+//     return Person(
+//       title: json['title'],
+//       knowledge: json['knowledge'],
+//     );
+//   }
+// }
 
-Future<String> _loadPersonAsset() async {
+Future<String> _loadKnowledgeAsset() async {
   return await rootBundle.loadString('assets/data.json');
 }
 
-Future<String> getPersonDataTitle() async {
-  String jsonString = await _loadPersonAsset();
+Future<String> getKnowledgeDataTitle() async {
+  String jsonString = await _loadKnowledgeAsset();
   var jsonResponse = json.decode(jsonString);
   return jsonResponse['title'];
 }
 
-Future<String> getPersonDataDescription() async {
-  String jsonString = await _loadPersonAsset();
+Future<String> getKnowledgeDataDescription() async {
+  String jsonString = await _loadKnowledgeAsset();
   var jsonResponse = json.decode(jsonString);
   return jsonResponse['knowledge'];
 }
 
 Future dailyAtTimeNotification(List<String> data) async {
-  Future<String> jsonTitleData = getPersonDataTitle();
-  Future<String> jsonDescriptionData = getPersonDataDescription();
+  Future<String> jsonTitleData = getKnowledgeDataTitle();
+  Future<String> jsonDescriptionData = getKnowledgeDataDescription();
   var notiTitle = await jsonTitleData;
   var notiDescription = await jsonDescriptionData;
 
