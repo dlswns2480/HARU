@@ -8,28 +8,39 @@ import 'dart:async';
 final nowTime = DateTime.now();
 final fiftyDaysFromNow = nowTime.add(const Duration(minutes: 1));
 int lastIndex = 0;
-
+int recentIndex = 0;
 var category = ['운동', '의료', '건강', '명언', '과학', 'IT', '경제', '영어'];
 
-int categoryIndex = 4; // 과학 지식!
+int categoryIndex = 0; // 과학 지식!
 Future<String> _loadKnowledgeAsset() async {
   return await rootBundle.loadString('assets/data.json');
 }
 
+int cnt = 0;
 Future<Knowledge> _getKnowledgeData() async {
   String jsonString = await _loadKnowledgeAsset();
   final jsonResponse = json.decode(jsonString);
 
-  Timer.periodic(const Duration(minutes: 1), (Timer t) {
+  Timer.periodic(const Duration(seconds: 3), (Timer t) {
     lastIndex++; //매 주기마다 index를 증가시켜 data를 주기마다 다른 것을 가져옴
-    //print(category[categoryIndex].length);//
-    if (lastIndex >= category.length) {
+    //print(category[categoryIndex]); //
+    //print(jsonResponse.length);
+    //print(jsonResponse["과학"].length);
+    print(jsonResponse.length);
+    //print(jsonResponse[category[lastIndex]].length);
+    if (lastIndex > jsonResponse.length - 1) {
       // 3초마다 Timer.periodic안에 있는 구문을 실행
+      recentIndex = lastIndex;
       lastIndex = 0;
+      cnt++;
+    }
+    if (cnt > jsonResponse[category[lastIndex]].length - 1) {
+      cnt = 0;
     }
   });
+  print(jsonResponse[category[lastIndex]].length); //현재 과학 지식 출력 해줌
   return Knowledge.fromJson(
-      jsonResponse, category[categoryIndex], lastIndex); //현재 과학 지식 출력 해줌
+      jsonResponse, category[lastIndex], cnt); //현재 과학 지식 출력 해줌
 }
 
 DateTime dt = DateTime.now();
@@ -116,7 +127,9 @@ class _HomeKnowledgeWidgetState extends State<HomeKnowledgeWidget> {
       ),
       body: RefreshIndicator(
         onRefresh: () async {
-          setState(() {});
+          setState(() {
+            _HomePageState();
+          });
         },
         child: SingleChildScrollView(
           child: Column(
