@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:haru/models/knowledge_model.dart';
@@ -74,7 +73,7 @@ class _HomePageState extends State<HomePage> {
 }
 
 @immutable
-class HomeKnowledgeWidget extends StatelessWidget {
+class HomeKnowledgeWidget extends StatefulWidget {
   final String title;
   final String knowledge;
 
@@ -85,197 +84,221 @@ class HomeKnowledgeWidget extends StatelessWidget {
   });
 
   @override
+  State<HomeKnowledgeWidget> createState() => _HomeKnowledgeWidgetState();
+}
+
+class _HomeKnowledgeWidgetState extends State<HomeKnowledgeWidget> {
+  @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      physics: const NeverScrollableScrollPhysics(),
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: double.infinity,
-            height: MediaQuery.of(context).size.height * 1,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage(
-                  "assets/images/category_images/IT.jpeg",
-                ),
-              ),
-            ),
-            child: Container(
-              width: 100,
-              height: 10,
-              decoration: const BoxDecoration(
-                color: Color(0x59000000),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(24, 70, 24, 44),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          '오늘의 지식',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: "NanumSquareRound",
-                            fontWeight: FontWeight.w400,
-                            fontSize: 30,
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                              const EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
-                          child: Text(
-                            '${dt.year}.${dt.month}.${dt.day}',
-                            style: const TextStyle(
-                              color: Colors.white70,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: ClipRRect(
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(
-                          sigmaX: 6,
-                          sigmaY: 7,
-                        ),
-                        child: Container(
-                          width: double.infinity,
-                          height: MediaQuery.of(context).size.height * 0.4,
-                          decoration: const BoxDecoration(
-                            color: Color(0x87000000),
-                          ),
-                          child: Align(
-                            alignment: const AlignmentDirectional(0, 0),
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  24, 24, 24, 24),
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      title,
-                                      style: const TextStyle(
-                                        fontFamily: "NanumSquare",
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 40,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 80,
-                                    ),
-                                    Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.9,
-                                      height: 2,
-                                      decoration: const BoxDecoration(
-                                        color: Color(0x34FFFFFF),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.9,
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.3,
-                                      child: SingleChildScrollView(
-                                        scrollDirection: Axis.vertical,
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          // crossAxisAlignment:
-                                          //     CrossAxisAlignment.start,
-                                          children: [
-                                            Flexible(
-                                              child: RichText(
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 100,
-                                                strutStyle: const StrutStyle(
-                                                    fontSize: 16.0),
-                                                text: TextSpan(
-                                                  text: knowledge,
-                                                  style: const TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 25,
-                                                    fontFamily: 'NanumSquare',
-                                                    fontWeight: FontWeight.w300,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.9,
-                                      height: 2,
-                                      decoration: const BoxDecoration(
-                                        color: Color(0x34FFFFFF),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: const [
-                                        Icon(
-                                          Icons.person,
-                                          color: Colors.white,
-                                          size: 20,
-                                        ),
-                                        // (author != "null")
-                                        //     ? Text(
-                                        //         author,
-                                        //         style: const TextStyle(
-                                        //             color: Colors.white54,
-                                        //             fontFamily:
-                                        //                 'NanumGothicEco',
-                                        //             fontWeight: FontWeight.w300,
-                                        //             fontSize: 20),
-                                        //       )
-                                        // : const Text(""),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: const Color(0xFFACD2ED),
+        automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.account_circle_outlined,
             ),
           ),
         ],
+        title: const Text(
+          "하루지식",
+          style: TextStyle(
+            fontFamily: "NanumGothic",
+            fontWeight: FontWeight.w900,
+            fontSize: 30,
+          ),
+        ),
+      ),
+      body: RefreshIndicator(
+        onRefresh: () async {
+          setState(() {});
+        },
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                alignment: Alignment.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Icon(Icons.arrow_circle_down_rounded),
+                    SizedBox(width: 10),
+                    Text("당겨서 새로고침"),
+                    SizedBox(width: 10),
+                    Icon(Icons.arrow_circle_down_rounded),
+                  ],
+                ),
+              ),
+              Container(
+                width: screenWidth * 0.95,
+                height: screenHeight * 0.7,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(45),
+                  image: const DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage(
+                      "assets/images/category_images/IT.jpeg",
+                    ),
+                  ),
+                ),
+                child: Container(
+                  width: 100,
+                  height: 10,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(45),
+                    color: const Color(0x59000000),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            24, 70, 24, 44),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              '오늘의 지식',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: "NanumSquareRound",
+                                fontWeight: FontWeight.w400,
+                                fontSize: 30,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0, 4, 0, 0),
+                              child: Text(
+                                '${dt.year}.${dt.month}.${dt.day}',
+                                style: const TextStyle(
+                                  color: Colors.white70,
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        height: screenHeight * 0.4,
+                        decoration: const BoxDecoration(
+                          color: Color(0x87000000),
+                        ),
+                        child: Align(
+                          alignment: const AlignmentDirectional(0, 0),
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                24, 24, 24, 24),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  widget.title,
+                                  style: const TextStyle(
+                                    fontFamily: "NanumSquare",
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 40,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Container(
+                                  width: screenWidth * 0.9,
+                                  height: 2,
+                                  decoration: const BoxDecoration(
+                                    color: Color(0x34FFFFFF),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                SizedBox(
+                                  width: screenWidth * 0.9,
+                                  height: screenHeight * 0.2,
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.vertical,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      // crossAxisAlignment:
+                                      //     CrossAxisAlignment.start,
+                                      children: [
+                                        Flexible(
+                                          child: RichText(
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 100,
+                                            strutStyle: const StrutStyle(
+                                                fontSize: 16.0),
+                                            text: TextSpan(
+                                              text: widget.knowledge,
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 25,
+                                                fontFamily: 'NanumSquare',
+                                                fontWeight: FontWeight.w300,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.9,
+                                  height: 2,
+                                  decoration: const BoxDecoration(
+                                    color: Color(0x34FFFFFF),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: const [
+                                    Icon(
+                                      Icons.person,
+                                      color: Colors.white,
+                                      size: 20,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: screenWidth,
+                height: screenHeight * 0.3,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
