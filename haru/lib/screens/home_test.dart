@@ -21,7 +21,7 @@ Future<Knowledge> _getKnowledgeData() async {
   String jsonString = await _loadKnowledgeAsset();
   final jsonResponse = json.decode(jsonString);
 
-  Timer.periodic(const Duration(seconds: 3), (Timer t) {
+  Timer.periodic(const Duration(minutes: 1), (Timer t) {
     lastIndex++; //매 주기마다 index를 증가시켜 data를 주기마다 다른 것을 가져옴
     if (lastIndex > 2) {
       // 3초마다 Timer.periodic안에 있는 구문을 실행
