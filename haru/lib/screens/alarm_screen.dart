@@ -4,6 +4,7 @@ import 'package:haru/screens/initial_alarm_screen.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:haru/widgets/daily_notification.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 final List<String> data = <String>[];
 
@@ -242,6 +243,10 @@ class _Alarm extends State<Alarm> {
     });
     settingTimes.removeAt(index);
     await prefs.setStringList('settingTimes', settingTimes);
+    final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+        FlutterLocalNotificationsPlugin();
+    await flutterLocalNotificationsPlugin.cancelAll();
+    dailyAtTimeNotification(data);
   }
 
   _selectDate() async {
