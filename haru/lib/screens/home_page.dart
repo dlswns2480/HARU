@@ -26,7 +26,7 @@ Future<Knowledge> _getKnowledgeData() async {
     //print(category[categoryIndex]); //
     //print(jsonResponse.length);
     //print(jsonResponse["과학"].length);
-    print(jsonResponse.length);
+    // print(jsonResponse.length);
     //print(jsonResponse[category[lastIndex]].length);
     if (lastIndex > jsonResponse.length - 1) {
       // 3초마다 Timer.periodic안에 있는 구문을 실행
@@ -38,7 +38,7 @@ Future<Knowledge> _getKnowledgeData() async {
       cnt = 0;
     }
   });
-  print(jsonResponse[category[lastIndex]].length); //현재 과학 지식 출력 해줌
+  // print(jsonResponse[category[lastIndex]].length); //현재 과학 지식 출력 해줌
   return Knowledge.fromJson(
       jsonResponse, category[lastIndex], cnt); //현재 과학 지식 출력 해줌
 }
@@ -149,7 +149,7 @@ class _HomeKnowledgeWidgetState extends State<HomeKnowledgeWidget> {
               ),
               Container(
                 width: screenWidth * 0.95,
-                height: screenHeight * 0.7,
+                height: screenHeight * 0.8,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(45),
                   image: const DecorationImage(
@@ -203,7 +203,7 @@ class _HomeKnowledgeWidgetState extends State<HomeKnowledgeWidget> {
                       ),
                       Container(
                         width: double.infinity,
-                        height: screenHeight * 0.4,
+                        height: screenHeight * 0.6,
                         decoration: const BoxDecoration(
                           color: Color(0x87000000),
                         ),
@@ -221,7 +221,7 @@ class _HomeKnowledgeWidgetState extends State<HomeKnowledgeWidget> {
                                   style: const TextStyle(
                                     fontFamily: "NanumSquare",
                                     fontWeight: FontWeight.w700,
-                                    fontSize: 40,
+                                    fontSize: 30,
                                     color: Colors.white,
                                   ),
                                 ),
@@ -240,7 +240,7 @@ class _HomeKnowledgeWidgetState extends State<HomeKnowledgeWidget> {
                                 ),
                                 SizedBox(
                                   width: screenWidth * 0.9,
-                                  height: screenHeight * 0.2,
+                                  height: screenHeight * 0.3,
                                   child: SingleChildScrollView(
                                     scrollDirection: Axis.vertical,
                                     child: Row(
@@ -260,7 +260,7 @@ class _HomeKnowledgeWidgetState extends State<HomeKnowledgeWidget> {
                                               text: widget.knowledge,
                                               style: const TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 25,
+                                                fontSize: 20,
                                                 fontFamily: 'NanumSquare',
                                                 fontWeight: FontWeight.w300,
                                               ),
@@ -304,10 +304,6 @@ class _HomeKnowledgeWidgetState extends State<HomeKnowledgeWidget> {
                     ],
                   ),
                 ),
-              ),
-              SizedBox(
-                width: screenWidth,
-                height: screenHeight * 0.3,
               ),
             ],
           ),
