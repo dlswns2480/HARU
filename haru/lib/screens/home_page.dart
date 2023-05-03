@@ -34,14 +34,14 @@ Future<Knowledge> _getKnowledgeData() async {
 
 DateTime dt = DateTime.now();
 
-class HomeTest extends StatefulWidget {
-  const HomeTest({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<HomeTest> createState() => _HomeTestState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _HomeTestState extends State<HomeTest> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<Knowledge>(
