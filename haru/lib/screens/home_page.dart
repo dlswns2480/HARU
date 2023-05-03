@@ -11,7 +11,7 @@ int lastIndex = 0;
 
 var category = ['운동', '의료', '건강', '명언', '과학', 'IT', '경제', '영어'];
 
-int categoryIndex = 0;
+int categoryIndex = 4; // 과학 지식!
 Future<String> _loadKnowledgeAsset() async {
   return await rootBundle.loadString('assets/data.json');
 }
@@ -22,13 +22,14 @@ Future<Knowledge> _getKnowledgeData() async {
 
   Timer.periodic(const Duration(seconds: 3), (Timer t) {
     lastIndex++; //매 주기마다 index를 증가시켜 data를 주기마다 다른 것을 가져옴
-    if (lastIndex > 2) {
+    //print(category[categoryIndex].length);//
+    if (lastIndex >= category.length) {
       // 3초마다 Timer.periodic안에 있는 구문을 실행
       lastIndex = 0;
     }
   });
   return Knowledge.fromJson(
-      jsonResponse, category[lastIndex], lastIndex); // 현재 운동 카테고리의 2번째 지식입니다.
+      jsonResponse, category[categoryIndex], lastIndex); //현재 과학 지식 출력 해줌
 }
 
 DateTime dt = DateTime.now();
