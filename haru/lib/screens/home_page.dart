@@ -201,11 +201,13 @@ class _HomeKnowledgeWidgetState extends State<HomeKnowledgeWidget> {
                           ],
                         ),
                       ),
+                      // 불투명 박스
                       Container(
                         width: double.infinity,
                         height: screenHeight * 0.6,
-                        decoration: const BoxDecoration(
-                          color: Color(0x87000000),
+                        decoration: BoxDecoration(
+                          color: const Color(0x87000000),
+                          borderRadius: BorderRadius.circular(45),
                         ),
                         child: Align(
                           alignment: const AlignmentDirectional(0, 0),
